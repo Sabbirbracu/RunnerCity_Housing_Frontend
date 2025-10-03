@@ -1,0 +1,267 @@
+@import "tailwindcss";
+/* ===============================
+   🎨 Design Tokens
+   =============================== */
+:root {
+  --background: 0 0% 100%;
+  --foreground: 215 25% 12%;
+
+  --card: 0 0% 100%;
+  --card-foreground: 215 25% 12%;
+
+  --popover: 0 0% 100%;
+  --popover-foreground: 215 25% 12%;
+
+  --primary: 168 76% 42%;
+  --primary-foreground: 0 0% 100%;
+
+  --secondary: 210 40% 96%;
+  --secondary-foreground: 215 25% 12%;
+
+  --muted: 210 40% 96%;
+  --muted-foreground: 215 16% 47%;
+
+  --accent: 210 100% 50%;
+  --accent-foreground: 0 0% 100%;
+
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+
+  --border: 220 13% 91%;
+  --input: 220 13% 91%;
+  --ring: 168 76% 42%;
+
+  --radius: 0.75rem;
+
+  /* Shadows */
+  --shadow-card: 0 1px 3px 0 hsl(0 0% 0% / 0.1),
+    0 1px 2px -1px hsl(0 0% 0% / 0.1);
+  --shadow-hover: 0 20px 25px -5px hsl(168 76% 42% / 0.15),
+    0 8px 10px -6px hsl(168 76% 42% / 0.15);
+  --shadow-xl: 0 25px 50px -12px hsl(0 0% 0% / 0.25);
+  --shadow-glow: 0 0 30px hsl(168 76% 42% / 0.3);
+}
+
+/* Dark Mode */
+.dark {
+  --background: 215 25% 12%;
+  --foreground: 0 0% 98%;
+
+  --card: 215 25% 15%;
+  --card-foreground: 0 0% 98%;
+
+  --popover: 215 25% 15%;
+  --popover-foreground: 0 0% 98%;
+
+  --primary: 168 76% 42%;
+  --primary-foreground: 0 0% 100%;
+
+  --secondary: 215 25% 20%;
+  --secondary-foreground: 0 0% 98%;
+
+  --muted: 215 25% 25%;
+  --muted-foreground: 215 16% 70%;
+
+  --accent: 168 76% 42%;
+  --accent-foreground: 0 0% 100%;
+
+  --destructive: 0 62% 40%;
+  --destructive-foreground: 0 0% 100%;
+
+  --border: 215 25% 25%;
+  --input: 215 25% 25%;
+  --ring: 168 76% 42%;
+}
+
+/* ===============================
+   🌍 Base Reset
+   =============================== */
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: system-ui, sans-serif;
+  line-height: 1.5;
+}
+
+/* ===============================
+   🎯 Utility Classes
+   =============================== */
+
+/* Backgrounds */
+.bg_background {
+  background-color: hsl(var(--background));
+}
+.bg_card {
+  background-color: hsl(var(--card));
+}
+.bg_popover {
+  background-color: hsl(var(--popover));
+}
+.bg_primary {
+  background-color: hsl(var(--primary));
+}
+.bg_secondary {
+  background-color: hsl(var(--secondary));
+}
+.bg_muted {
+  background-color: hsl(var(--muted));
+}
+.bg_accent {
+  background-color: hsl(var(--accent));
+}
+.bg_destructive {
+  background-color: hsl(var(--destructive));
+}
+
+/* Text Colors */
+.text_foreground {
+  color: hsl(var(--foreground));
+}
+.text_card {
+  color: hsl(var(--card-foreground));
+}
+.text_popover {
+  color: hsl(var(--popover-foreground));
+}
+.text_primary {
+  color: hsl(var(--primary-foreground));
+}
+.text_secondary {
+  color: hsl(var(--secondary-foreground));
+}
+.text_muted {
+  color: hsl(var(--muted-foreground));
+}
+.text_accent {
+  color: hsl(var(--accent-foreground));
+}
+.text_destructive {
+  color: hsl(var(--destructive-foreground));
+}
+
+/* Borders */
+.border_custom {
+  border: 1px solid hsl(var(--border));
+}
+.border_input {
+  border: 1px solid hsl(var(--input));
+}
+
+/* Radius */
+.radius_custom {
+  border-radius: var(--radius);
+}
+
+/* Shadows */
+.shadow_card {
+  box-shadow: var(--shadow-card);
+}
+.shadow_hover {
+  box-shadow: var(--shadow-hover);
+}
+.shadow_xl {
+  box-shadow: var(--shadow-xl);
+}
+.shadow_glow {
+  box-shadow: var(--shadow-glow);
+}
+
+/* Focus Rings */
+.ring_custom {
+  outline: 2px solid hsl(var(--ring));
+}
+
+/* ===============================
+   Layout Utilities
+   =============================== */
+.container_custom {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.flex_custom {
+  display: flex;
+}
+
+.flex_col {
+  display: flex;
+  flex-direction: column;
+}
+
+.items_center {
+  align-items: center;
+}
+
+.justify_between {
+  justify-content: space-between;
+}
+
+.gap_1 {
+  gap: 0.25rem;
+}
+.gap_3 {
+  gap: 0.75rem;
+}
+.gap_6 {
+  gap: 1.5rem;
+}
+
+/* Heights */
+.h_10 {
+  height: 2.5rem;
+}
+.h_16 {
+  height: 4rem;
+}
+
+/* Widths */
+.w_10 {
+  width: 2.5rem;
+}
+
+/* Text Utilities */
+.font_bold {
+  font-weight: 700;
+}
+.font_medium {
+  font-weight: 500;
+}
+.text_lg {
+  font-size: 1.125rem;
+}
+.text_sm {
+  font-size: 0.875rem;
+}
+.text_xs {
+  font-size: 0.75rem;
+}
+.leading_none {
+  line-height: 1;
+}
+
+/* Hover + Transition */
+.hover_text_primary:hover {
+  color: hsl(var(--primary));
+}
+.transition_custom {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Responsive utilities */
+.hidden_md {
+  display: none;
+}
+@media (min-width: 768px) {
+  .hidden_md {
+    display: flex;
+  }
+}
+.hidden_sm {
+  display: none;
+}
+@media (min-width: 640px) {
+  .hidden_sm {
+    display: inline-flex;
+  }
+}
