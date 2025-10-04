@@ -1,4 +1,4 @@
-import DemoMockup from "../../assets/dashboard-mockup.jpg";
+import DemoMockup from "../../assets/demo.png";
 
 export const DemoSection = () => {
   return (

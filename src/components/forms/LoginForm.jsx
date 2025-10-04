@@ -26,8 +26,12 @@ export const LoginForm = ({ onSwitch }) => {
       // Show success toast
       toast.success("Login successful!");
 
-      // Redirect to dashboard
-      navigate("/dashboard");
+      // Redirect based on role
+      if (res.user.role === "admin") {
+        navigate("/admin-dashboard");
+      } else {
+        navigate("/dashboard");
+      }
     } catch (err) {
       console.error("Login failed:", err);
 

@@ -265,3 +265,66 @@ body {
     display: inline-flex;
   }
 }
+
+/* Add this block to your main CSS file (outside of React components) */
+/* FINAL POLISHED CSS for index.css - Paste this exactly */
+.kpi-card-effects {
+  position: relative;
+  isolation: isolate;
+  border-radius: 1rem;
+  z-index: 0;
+  background: white; /* fallback */
+}
+
+/* Gradient border (top + left only) */
+.kpi-card-effects::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 2px; /* border thickness */
+  border-radius: 1rem;
+
+  background:
+    /* Left edge: full height but only 6px wide */ linear-gradient(
+        to bottom,
+        var(--kpi-shadow-color),
+        white
+      )
+      left/6px 100% no-repeat,
+    /* Top edge: full width but only 6px tall */
+      linear-gradient(to right, var(--kpi-shadow-color), white) top/100% 6px
+      no-repeat;
+
+  background-repeat: no-repeat;
+
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Inner background gradient */
+.kpi-card-effects::after {
+  content: "";
+  position: absolute;
+  inset: 2px; /* sits inside the border */
+  border-radius: calc(1rem - 2px);
+
+  /* Light gradient: subtle tint → fade to white */
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--kpi-shadow-color) 15%, transparent) 0%,
+    white 80%
+  );
+
+  z-index: 0; /* behind content but above ::before */
+  pointer-events: none;
+}
+
+/* Inner content */
+.kpi-card-effects > * {
+  position: relative;
+  z-index: 2;
+}
