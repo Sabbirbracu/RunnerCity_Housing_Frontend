@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import logo from "../../../src/assets/logo2.png";
 import { ForgotPasswordForm } from "../forms/ForgetPasswordForm";
 import { LoginForm } from "../forms/LoginForm";
-import { SignupForm } from "../forms/SignupForm";
+import { SignupForm } from "../forms/SignUpForm";
 import { Modal } from "../modal/modal";
 import Button from "../ui/button";
 
