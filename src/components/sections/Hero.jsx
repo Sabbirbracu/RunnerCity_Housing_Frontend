@@ -85,6 +85,7 @@ export const Hero = () => {
           <Button
             size="lg"
             className="min-w-[220px] bg-white/20 backdrop-blur-md border-2 border-white/30 text-white hover:bg-white/30 transition-all"
+            onClick = {()=>window.location.href = "#features"}
           >
             Explore Features
           </Button>

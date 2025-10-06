@@ -52,6 +52,7 @@ export const Header = () => {
                 src={logo}
                 alt="Runner City Housing"
                 className="h-14 md:h-16 object-contain"
+                onClick = {()=> window.location.href = "/"}
               />
               <div className="flex flex-col">
                 <span className="font-bold text-lg md:text-xl leading-none text-gray-900">

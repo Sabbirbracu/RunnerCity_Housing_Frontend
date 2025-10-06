@@ -1,4 +1,28 @@
+import { useState } from "react";
+import { ForgotPasswordForm } from "../forms/ForgetPasswordForm";
+import { LoginForm } from "../forms/LoginForm";
+import { SignupForm } from "../forms/SignUpForm";
+import { Modal } from "../modal/modal";
+
 export const CTA = () => {
+
+  const [isModalOpen, setIsModalOpen]= useState(false);
+  const [activeForm, setActiveForm] = useState("login");
+
+
+  const renderForm = () => {
+        switch (activeForm) {
+          case "login":
+            return <LoginForm onSwitch={setActiveForm} />;
+          case "signup":
+            return <SignupForm onSwitch={setActiveForm} />;
+          case "forgot":
+            return <ForgotPasswordForm onSwitch={setActiveForm} />;
+          default:
+            return null;
+        }
+      };
+  
   return (
     <section className="relative py-32 px-4 overflow-hidden">
       {/* Background Gradient */}
@@ -40,14 +64,34 @@ export const CTA = () => {
 
         {/* CTA Buttons */}
         <div className="relative flex flex-col sm:flex-row gap-5 justify-center items-center">
-          <button className="min-w-[220px] h-14 px-8 bg-white text-emerald-700 font-semibold text-lg rounded-lg shadow-2xl hover:shadow-xl hover:scale-105 transition-all z-10">
+          <button className="min-w-[220px] h-14 px-8 bg-white text-emerald-700 font-semibold text-lg rounded-lg shadow-2xl hover:shadow-xl hover:scale-105 transition-all z-10"
+          onClick={()=>{
+            setActiveForm("login");
+            setIsModalOpen(true);
+          }}
+        >
             Login Now
           </button>
-          <button className="min-w-[220px] h-14 px-8 bg-white/20 border-2 border-white/40 text-white font-semibold text-lg rounded-lg backdrop-blur-md shadow-xl hover:bg-white/30 transition-all z-10">
+          <button className="min-w-[220px] h-14 px-8 bg-white/20 border-2 border-white/40 text-white font-semibold text-lg rounded-lg backdrop-blur-md shadow-xl hover:bg-white/30 transition-all z-10"
+          onClick={()=>{
+            setActiveForm("signup");
+            setIsModalOpen(true);
+          }}
+          >
             Request Access
           </button>
         </div>
       </div>
+
+      {/* Modal (shared for all forms) */}
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        title=""
+      >
+        {renderForm()}
+      </Modal>
+      
     </section>
   );
 };
