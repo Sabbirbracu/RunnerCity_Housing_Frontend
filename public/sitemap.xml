@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- This is your homepage. -->
+  <url>
+    <loc>https://rchms.qullia.com/</loc>
+    <lastmod>2025-10-07</lastmod>
+    <!-- (Optional) How frequently the page is likely to change. -->
+    <changefreq>weekly</changefreq>
+    <!-- (Optional) The priority of this URL relative to other URLs on your site. Value between 0.0 and 1.0 -->
+    <priority>1.0</priority>
+  </url>
+
+  <!-- 
+  EXAMPLE: To add more public pages, copy the <url> block.
+  Here's an example for an "About Us" page.
+  -->
+  <!--
+  <url>
+    <loc>https://www.yourwebsite.com/about</loc>
+    <lastmod>2025-10-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  -->
+  
+  <!--
+  EXAMPLE: For a "Contact" page.
+  -->
+  <!--
+  <url>
+    <loc>https://www.yourwebsite.com/contact</loc>
+    <lastmod>2025-10-07</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  -->
+
+</urlset>
+
