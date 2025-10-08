@@ -2,11 +2,11 @@ import { useSelector } from "react-redux";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { AdminLayout } from "./layouts/adminLayout";
 import { AdminDashboard } from "./pages/Admin/AdminDashboard";
+import CommunityPlots from "./pages/Admin/CommunityPlots";
 import CommunityUser from "./pages/Admin/CommunityUser";
 import { Dashboard } from "./pages/Dashboard";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
-
 export const RootRouter = () => {
   const { token, user } = useSelector((state) => state.auth);
 
@@ -28,8 +28,9 @@ export const RootRouter = () => {
         {/* Admin Protected Routes */}
         {isAdmin && (
           <Route element={<AdminLayout />}>
-            <Route path="/admin-dashboard" element={<AdminDashboard />} />
+            <Route path="/admin-dashboard" element={<AdminDashboard />}/>
             <Route path="/community/users" element={<CommunityUser />} />
+            <Route path="/community/plots" element={<CommunityPlots />}/>
             {/* Add more admin pages here */}
           </Route>
         )}

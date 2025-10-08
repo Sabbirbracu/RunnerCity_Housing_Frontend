@@ -47,6 +47,7 @@ export const Sidebar = () => {
       { id: "community-polls", label: "Polls & Voting", path: "/community/polls" },
       { id: "community-blood", label: "Blood Donor Registry", path: "/community/blood" },
       { id: "community-gallery", label: "Announcements / Gallery", path: "/community/gallery" },
+      { id: "community-plots", label: "Plots Info", path: "/community/plots" },
     ],
   };
 

@@ -120,8 +120,18 @@ export const Header = () => {
         onClose={() => setIsModalOpen(false)}
         title=""
       >
-        {renderForm()}
+        {activeForm === "signup" ? (
+          <SignupForm
+            onSwitch={setActiveForm}
+            onSuccess={() => {
+              toast.success("Account created successfully! 🎉");
+              setIsModalOpen(false);
+              window.location.href = "/"; // redirect after success
+            }}
+          />
+        ) : renderForm()}
       </Modal>
+
     </>
   );
 };

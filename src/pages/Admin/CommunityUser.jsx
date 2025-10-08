@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useApproveUserMutation, useDeleteUserMutation, useGetUsersQuery, useRejectUserMutation } from "../../features/api/userApi";
 
+import CircularProgress from '@mui/material/CircularProgress';
 import CommunityUserBottom from "./CommunityUser/CommunityUserBottom";
 import CommunityUserMiddle from "./CommunityUser/CommunityUserMiddle";
 import CommunityUserTop from "./CommunityUser/CommunityUserTop";
@@ -34,8 +35,20 @@ const CommunityUser = () => {
 
   const handleViewProfile = (id) => console.log("View Profile", id);
 
-  if (isLoading) return <div>Loading users...</div>;
-  if (isError) return <div className="text-red-500">Error loading users. {error?.status && <span>Status: {error.status}</span>}</div>;
+  if (isLoading)
+    return (
+      <div className="flex items-center justify-center h-[70vh]">
+        <CircularProgress color="secondary" size={60} thickness={5} />
+      </div>
+    );
+
+  if (isError)
+    return (
+      <div className="flex items-center justify-center h-[70vh] text-red-500 text-lg font-medium">
+        Error loading users.&nbsp;
+        {error?.status && <span>Status: {error.status}</span>}
+      </div>
+    );
 
   const filteredUsers = users.filter(
     (u) =>
@@ -62,3 +75,4 @@ const CommunityUser = () => {
 };
 
 export default CommunityUser;
+
