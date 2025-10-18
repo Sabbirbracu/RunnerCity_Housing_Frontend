@@ -1,16 +1,68 @@
-# React + Vite
+# 🏙️ Runner City Housing Management System (Frontend)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Empowering smarter community living through digital housing management.**
 
-Currently, two official plugins are available:
+The **Runner City Housing Management System (RCHMS)** is a modern full-stack web application designed to automate and streamline housing society operations — from resident registration to admin control, payments, and community management.  
+This repository contains the **frontend** implementation, built with **React**, **Tailwind CSS**, **Redux Toolkit**, and **RTK Query** for state and API management.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🚀 Live Demo
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+🌐 **Frontend:** [rchms.qullia.com](https://rchms.qullia.com)  
+🧠 **Backend API:** [RunnerCityHousing_Backend](https://github.com/Sabbirbracu/RunnerCityHousing_Backend)
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🧩 Tech Stack
+
+| Category | Technologies |
+|-----------|---------------|
+| **Frontend Framework** | React (Vite Setup) |
+| **Styling** | Tailwind CSS |
+| **State Management** | Redux Toolkit + RTK Query |
+| **Routing** | React Router DOM |
+| **API Communication** | RTK Query with Express REST API |
+| **Version Control** | Git + GitHub |
+| **Deployment** | Vercel |
+
+---
+
+## 📸 UI Preview
+
+### 🏠 Landing Page  
+![Landing Page Hero](./public/preview/landing-hero.png)
+
+> A clean, responsive, and modern landing page that introduces the housing management system and provides quick access to login/signup.
+
+---
+
+## ⚙️ Core Features
+
+### ✅ Completed
+- **Multi-Role Authentication System**
+  - Sign up & login for Admin, Resident, and Committee Members.
+  - JWT-based session handling (integrated via backend API).
+- **Modern Landing Page**
+  - Responsive, accessible, and optimized for performance.
+- **Admin Dashboard**
+  - Centralized control panel for managing plots, residents, and society data.
+- **Housing Plot Management**
+  - Add, view, and manage available or occupied housing plots.
+
+### 🧭 Ongoing Development
+- **Resident Dashboard**
+  - Personalized interface for residents to view dues, notices, and facility updates.
+- **Payment Tracking**
+  - Integration with online payment gateway (bKash/Nagad).
+- **Maintenance Requests**
+  - Digital ticketing for maintenance and issue reporting.
+- **Community Notice Board**
+  - Central announcement system for admin and committee communications.
+- **Security & Access Control**
+  - Role-based routing and restricted view layers.
+
+---
+
+## 🏗️ System Architecture
+
