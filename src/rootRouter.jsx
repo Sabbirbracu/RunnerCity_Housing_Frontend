@@ -4,9 +4,9 @@ import { AdminLayout } from "./layouts/adminLayout";
 import { AdminDashboard } from "./pages/Admin/AdminDashboard";
 import CommunityPlots from "./pages/Admin/CommunityPlots";
 import CommunityUser from "./pages/Admin/CommunityUser";
-import { Dashboard } from "./pages/Owner/Dashboard";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
+import { Dashboard } from "./pages/Owner/Dashboard";
 export const RootRouter = () => {
   const { token, user } = useSelector((state) => state.auth);
 

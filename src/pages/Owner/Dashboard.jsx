@@ -1,5 +1,8 @@
+import { FaRegCalendarAlt, FaTint, FaTools } from 'react-icons/fa';
 import CustomTable from "../../components/ui/CustomTable";
+import { DynamicAnnouncementBar } from './Dashboard/AnnouncementBar';
 import { KPI_Cards } from "./Dashboard/KPI_section";
+import { NormalCard } from "./Dashboard/NormalCard";
 import { PrayerCard } from "./Dashboard/Prayer_card";
 
 export const Dashboard = () => {
@@ -37,61 +40,70 @@ export const Dashboard = () => {
     },
   ];
 
+  // Announcement Data
+  const announcementMessage = (
+    <>
+      <span className="text-white">New Campaign:</span> Road Repair Fund is 
+      <span className="text-green-400"> 75% funded.</span>
+    </>
+  );
+
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* ========== Row 1: Announcement Bar ========== */}
-      <div className="rounded-xl bg-green-50 px-5 py-3 text-center font-semibold text-green-800 mb-6">
-        Current Campaign:{" "}
-        <span className="text-green-900">Road Repair Fund</span> is 75% funded.{" "}
-        <a
-          href="#"
-          className="underline text-green-700 hover:text-green-900 transition-colors"
-        >
-          Click to Contribute
-        </a>
-      </div>
+      
+      {/* ========== Row 1: Redesigned Dynamic Announcement Bar ========== */}
+      <DynamicAnnouncementBar 
+        message={announcementMessage}
+        ctaText="Contribute Now"
+        ctaLink="#"
+      />
 
       {/* ========== Row 2: KPI Cards (Modular Component) ========== */}
       <KPI_Cards />
 
       {/* ========== Rows 3 + 4 Combined Grid ========== */}
-      <div className="grid grid-cols-1 lg:grid-cols-5 gap-2 mt-6">
-        {/* ===== Left 4 Columns ===== */}
-        <div className="lg:col-span-4 space-y-5">
-          {/* Row 3 – Community Info Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-2">
-            <div className="bg-white p-5 rounded-2xl shadow hover:shadow-md transition-shadow">
-              <h3 className="text-gray-500 text-sm mb-1">Upcoming Events</h3>
-              <p className="text-gray-800 font-semibold">
-                Football Tournament — Nov 1
-              </p>
-            </div>
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-3 mt-6">
 
-            <div className="bg-white p-5 rounded-2xl shadow hover:shadow-md transition-shadow">
-              <h3 className="text-gray-500 text-sm mb-1">Active Campaigns</h3>
-              <p className="text-gray-800 font-semibold">
-                Vote: Security Cameras
-              </p>
-              <p className="text-xs text-gray-500">Deadline: Oct 31</p>
-            </div>
+        <div className="lg:col-span-3 space-y-6">
 
-            <div className="bg-white p-5 rounded-2xl shadow hover:shadow-md transition-shadow">
-              <h3 className="text-gray-500 text-sm mb-1">Maintenance Status</h3>
-              <p className="text-gray-800 font-semibold">
-                Street Lights: 1 Reported
-              </p>
-            </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4"> {/* Increased gap for better separation */}
+            
+            {/* 1. Upcoming Events */}
+            <NormalCard 
+              title="Upcoming Event" 
+              content="Football Tournament" 
+              subContent="Registration closes next week"
+              button_txt="Register Now"
+              icon={FaRegCalendarAlt}
+              iconBgColor="bg-teal-100" // Use your primary accent color
+              iconTextColor="text-teal-600"
+            />
 
-            <div className="bg-white p-5 rounded-2xl shadow hover:shadow-md transition-shadow">
-              <h3 className="text-gray-500 text-sm mb-1">Community Notices</h3>
-              <p className="text-gray-800 font-semibold">
-                Blood Donation Drive – Oct 25
-              </p>
-            </div>
+            {/* 3. Maintenance Status */}
+            <NormalCard 
+              title="Maintenance" 
+              content="Street Lights: 1 Reported"
+              subContent="Last update: Oct 20"
+              button_txt="View Reports"
+              icon={FaTools}
+              iconBgColor="bg-blue-100" 
+              iconTextColor="text-blue-600"
+            />
+            
+            {/* 4. Blood Status Card */}
+            <NormalCard 
+              title="Blood Donation" 
+              content="Emergency Need (A+)" 
+              subContent="1 new request nearby"
+              button_txt="Donate Now"
+              icon={FaTint}
+              iconBgColor="bg-red-100" 
+              iconTextColor="text-red-600"
+            />
           </div>
 
-          {/* Row 4 – Using CustomTable Component */}
-          <div className="bg-transparent rounded-2xl">
+          {/* Row 4 – Recent Transactions Table */}
+          <div className="bg-white p-6 rounded-2xl shadow-lg"> {/* Added background and shadow to match card style */}
             <h3 className="text-gray-700 text-lg font-semibold mb-4">
               Recent Transactions
             </h3>
@@ -105,7 +117,9 @@ export const Dashboard = () => {
         </div>
 
         {/* ===== Right Column: Prayer Card (Modularized) ===== */}
-        <PrayerCard />
+        <div className="lg:col-span-1">
+          <PrayerCard />
+        </div>
       </div>
     </div>
   );

@@ -5,7 +5,7 @@ const Button = ({ children, variant = "default", size = "default", className = "
 
   const variants = {
     default:
-      "bg-emerald-600 text-white hover:bg-emerald-700 shadow-md hover:shadow-lg transition-all",
+      "text-white shadow-md hover:shadow-lg transition-all",
     destructive:
       "bg-red-600 text-white hover:bg-red-700 shadow-md hover:shadow-lg",
     outline:

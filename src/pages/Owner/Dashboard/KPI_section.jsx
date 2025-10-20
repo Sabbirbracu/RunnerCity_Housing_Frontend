@@ -1,6 +1,6 @@
 import { DollarSign, HousePlus, TrendingUp } from "lucide-react";
 import { KPIWidget } from "../../../components/admin/KPIWidget";
-import { FeeCard } from "./Fee_Card"; 
+import { FeeCard } from "./Fee_Card";
 
 export const KPI_Cards = () => {
   return (
