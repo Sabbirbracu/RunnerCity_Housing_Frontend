@@ -1,17 +1,17 @@
 import { useSelector } from "react-redux";
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { AdminLayout } from "./layouts/adminLayout";
 import { AdminDashboard } from "./pages/Admin/AdminDashboard";
 import CommunityPlots from "./pages/Admin/CommunityPlots";
 import CommunityUser from "./pages/Admin/CommunityUser";
-import { Dashboard } from "./pages/Dashboard";
+import { Dashboard } from "./pages/Owner/Dashboard";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 export const RootRouter = () => {
   const { token, user } = useSelector((state) => state.auth);
 
   const isAdmin = token && user?.role === "admin";
-  const isUser = token && user?.role !== "admin";
+  const isOwner = token && user?.role !== "Owner";
 
   return (
     <BrowserRouter>
@@ -20,10 +20,14 @@ export const RootRouter = () => {
         <Route path="/" element={<Home />} />
 
         {/* User Dashboard */}
-        <Route
-          path="/dashboard"
-          element={isUser ? <Dashboard /> : <Navigate to="/" replace />}
-        />
+        {isOwner && (
+          <Route element={<AdminLayout />}>
+            <Route path="/dashboard" element={<Dashboard />}/>
+            {/* <Route path="/community/users" element={<CommunityUser />} />
+            <Route path="/community/plots" element={<CommunityPlots />}/> */}
+            {/* Add more admin pages here */}
+          </Route>
+        )}
 
         {/* Admin Protected Routes */}
         {isAdmin && (
