@@ -29,7 +29,7 @@ export const RootRouter = () => {
           </Route>
         )}
 
-        {/* Admin Protected Routes */}
+        
         {isAdmin && (
           <Route element={<AdminLayout />}>
             <Route path="/admin-dashboard" element={<AdminDashboard />}/>
