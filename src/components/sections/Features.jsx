@@ -1,46 +1,49 @@
 import {
-  Calendar,
-  CreditCard,
-  DollarSign,
-  Eye,
-  Heart,
-  Shield,
+    Calendar,
+    CreditCard,
+    DollarSign,
+    Eye,
+    Heart,
+    Shield,
 } from "lucide-react";
-
-const features = [
-  {
-    icon: CreditCard,
-    title: "Online Fee Payments",
-    description: "Pay instantly via SSLCommerz, bKash, Nagad. Receipts in real-time.",
-  },
-  {
-    icon: DollarSign,
-    title: "Payroll Made Simple",
-    description: "Salaries for Imams, guards, and cleaners — digital, timely, easy.",
-  },
-  {
-    icon: Eye,
-    title: "Transparent Finances",
-    description: "Real-time tracking for all residents. Trust everyone can see.",
-  },
-  {
-    icon: Calendar,
-    title: "Manage Events & Contributions",
-    description: "Ramadan, Eid, charity drives, all tracked online.",
-  },
-  {
-    icon: Heart,
-    title: "Blood Donation & Campaigns",
-    description: "Community health and charity at your fingertips.",
-  },
-  {
-    icon: Shield,
-    title: "AI-Powered Security",
-    description: "Smart monitoring, alerts, predictive CCTV maintenance.",
-  },
-];
+import { useTranslation } from "react-i18next";
 
 export const Features = () => {
+  const { t } = useTranslation();
+
+  const features = [
+    {
+      icon: CreditCard,
+      titleKey: "features.items.onlinePayment.title",
+      descriptionKey: "features.items.onlinePayment.description",
+    },
+    {
+      icon: DollarSign,
+      titleKey: "features.items.payroll.title",
+      descriptionKey: "features.items.payroll.description",
+    },
+    {
+      icon: Eye,
+      titleKey: "features.items.transparency.title",
+      descriptionKey: "features.items.transparency.description",
+    },
+    {
+      icon: Calendar,
+      titleKey: "features.items.events.title",
+      descriptionKey: "features.items.events.description",
+    },
+    {
+      icon: Heart,
+      titleKey: "features.items.bloodDonation.title",
+      descriptionKey: "features.items.bloodDonation.description",
+    },
+    {
+      icon: Shield,
+      titleKey: "features.items.security.title",
+      descriptionKey: "features.items.security.description",
+    },
+  ];
+
   return (
     <section id="features" className="relative py-32 px-4 bg-gradient-to-b from-gray-50 via-white to-gray-50 overflow-hidden">
       
@@ -54,10 +57,10 @@ export const Features = () => {
         {/* Section Heading */}
         <div className="text-center mb-24">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
-            Core Features
+            {t('features.title')}
           </h2>
           <p className="text-lg md:text-xl text-gray-700 max-w-2xl mx-auto leading-relaxed">
-            Everything you need to manage your community efficiently and transparently
+            {t('features.subtitle')}
           </p>
         </div>
 
@@ -80,12 +83,12 @@ export const Features = () => {
 
                 {/* Title */}
                 <h3 className="text-xl md:text-2xl font-semibold text-gray-900">
-                  {feature.title}
+                  {t(feature.titleKey)}
                 </h3>
 
                 {/* Description */}
                 <p className="text-gray-600 leading-relaxed">
-                  {feature.description}
+                  {t(feature.descriptionKey)}
                 </p>
               </div>
             </div>

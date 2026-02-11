@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Anek+Bangla:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 @import "tailwindcss";
 /* ===============================
    🎨 Design Tokens
@@ -34,9 +36,10 @@
   --radius: 0.75rem;
 
   /* Shadows */
-  --shadow-card: 0 1px 3px 0 hsl(0 0% 0% / 0.1),
-    0 1px 2px -1px hsl(0 0% 0% / 0.1);
-  --shadow-hover: 0 20px 25px -5px hsl(168 76% 42% / 0.15),
+  --shadow-card:
+    0 1px 3px 0 hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
+  --shadow-hover:
+    0 20px 25px -5px hsl(168 76% 42% / 0.15),
     0 8px 10px -6px hsl(168 76% 42% / 0.15);
   --shadow-xl: 0 25px 50px -12px hsl(0 0% 0% / 0.25);
   --shadow-glow: 0 0 30px hsl(168 76% 42% / 0.3);
@@ -79,8 +82,12 @@
 body {
   background-color: hsl(var(--background));
   color: hsl(var(--foreground));
-  font-family: system-ui, sans-serif;
+  font-family: "Poppins", system-ui, sans-serif;
   line-height: 1.5;
+}
+
+:lang(bn) {
+  font-family: "Anek Bangla", system-ui, sans-serif;
 }
 
 /* ===============================
@@ -285,19 +292,18 @@ body {
   border-radius: 1rem;
 
   background:
-    /* Left edge: full height but only 6px wide */ linear-gradient(
-        to bottom,
-        var(--kpi-shadow-color),
-        white
-      )
-      left/6px 100% no-repeat,
+    /* Left edge: full height but only 6px wide */
+    linear-gradient(to bottom, var(--kpi-shadow-color), white) left/6px 100%
+      no-repeat,
     /* Top edge: full width but only 6px tall */
-      linear-gradient(to right, var(--kpi-shadow-color), white) top/100% 6px
+    linear-gradient(to right, var(--kpi-shadow-color), white) top/100% 6px
       no-repeat;
 
   background-repeat: no-repeat;
 
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
 

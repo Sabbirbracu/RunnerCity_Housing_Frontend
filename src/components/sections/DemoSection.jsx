@@ -1,17 +1,19 @@
+import { useTranslation } from "react-i18next";
 import DemoMockup from "../../assets/demo.png";
 
 export const DemoSection = () => {
+  const { t } = useTranslation();
+
   return (
     <section className="py-20 px-4 bg-gray-50">
       <div className="container mx-auto max-w-7xl">
         {/* Section Heading */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
-            See How It Works for Us
+            {t('demo.title')}
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Clean dashboards give every resident and committee member instant access to payments,
-            events, and security updates.
+            {t('demo.subtitle')}
           </p>
         </div>
 
@@ -35,13 +37,13 @@ export const DemoSection = () => {
           {/* Floating feature badges */}
           <div className="absolute -bottom-6 left-6 right-6 flex flex-wrap gap-3 justify-center">
             <div className="px-4 py-2 bg-white border border-gray-200 rounded-full shadow-md text-sm font-semibold text-gray-700">
-              Real-time Analytics
+              {t('demo.badge1')}
             </div>
             <div className="px-4 py-2 bg-white border border-gray-200 rounded-full shadow-md text-sm font-semibold text-gray-700">
-              Secure Payments
+              {t('demo.badge2')}
             </div>
             <div className="px-4 py-2 bg-white border border-gray-200 rounded-full shadow-md text-sm font-semibold text-gray-700">
-              AI Security
+              {t('demo.badge3')}
             </div>
           </div>
         </div>

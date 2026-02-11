@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { FiGlobe } from "react-icons/fi";
 import logo from "../../../src/assets/logo2.png";
 import { ForgotPasswordForm } from "../forms/ForgetPasswordForm";
 import { LoginForm } from "../forms/LoginForm";
@@ -7,11 +9,18 @@ import { Modal } from "../modal/modal";
 import Button from "../ui/button";
 
 export const Header = () => {
+  const { t, i18n } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
 
   // Modal state
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeForm, setActiveForm] = useState("login"); // "login" | "signup" | "forgot"
+
+  // Language toggle function
+  const toggleLanguage = () => {
+    const newLang = i18n.language === 'bn' ? 'en' : 'bn';
+    i18n.changeLanguage(newLang);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -56,10 +65,10 @@ export const Header = () => {
               />
               <div className="flex flex-col">
                 <span className="font-bold text-lg md:text-xl leading-none text-gray-900">
-                  Runner City
+                  {t('header.brand')}
                 </span>
                 <span className="text-xs md:text-sm text-gray-500">
-                  Housing Management
+                  {t('header.subtitle')}
                 </span>
               </div>
             </div>
@@ -70,24 +79,34 @@ export const Header = () => {
                 href="#features"
                 className="text-sm font-medium hover:text-emerald-600 transition-colors"
               >
-                Features
+                {t('header.features')}
               </a>
               <a
                 href="#benefits"
                 className="text-sm font-medium hover:text-emerald-600 transition-colors"
               >
-                Benefits
+                {t('header.benefits')}
               </a>
               <a
                 href="#testimonials"
                 className="text-sm font-medium hover:text-emerald-600 transition-colors"
               >
-                Testimonials
+                {t('header.testimonials')}
               </a>
             </nav>
 
             {/* CTA Buttons */}
             <div className="flex items-center gap-3">
+              {/* Language Switcher */}
+              <button
+                onClick={toggleLanguage}
+                className="flex items-center gap-2 px-3 py-2 rounded-lg border border-gray-300 hover:border-emerald-500 hover:text-emerald-600 transition-all text-sm font-medium"
+                title={i18n.language === 'bn' ? 'Switch to English' : 'বাংলায় স্যুইচ করুন'}
+              >
+                <FiGlobe className="w-4 h-4" />
+                <span className="hidden sm:inline">{i18n.language === 'bn' ? 'EN' : 'বাং'}</span>
+              </button>
+
               <Button
                 variant="outline"
                 size="md"
@@ -97,7 +116,7 @@ export const Header = () => {
                   setIsModalOpen(true);
                 }}
               >
-                Request Access
+                {t('header.requestAccess')}
               </Button>
               <Button
                 size="md"
@@ -107,7 +126,7 @@ export const Header = () => {
                   setIsModalOpen(true);
                 }}
               >
-                Login
+                {t('header.login')}
               </Button>
             </div>
           </div>

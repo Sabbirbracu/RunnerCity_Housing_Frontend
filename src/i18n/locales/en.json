@@ -1,0 +1,156 @@
+{
+  "header": {
+    "brand": "Runner City",
+    "subtitle": "Housing Management",
+    "features": "Features",
+    "benefits": "Benefits",
+    "testimonials": "Testimonials",
+    "requestAccess": "Request Access",
+    "login": "Login"
+  },
+  "hero": {
+    "tagline": "Make committee work simple, transparent, and reliable",
+    "title": "Community management",
+    "titleHighlight": "made effortless",
+    "subtitle": "Runner City Housing Management System brings fees, notices, events, payroll, and security into one clear dashboard—so residents stay informed and the committee makes faster, confident decisions.",
+    "loginNow": "Go to Dashboard",
+    "exploreFeatures": "See what you’ll get"
+  },
+  "problemSolution": {
+    "title": "Why a modern community system matters",
+    "problem": {
+      "tag": "Today’s reality",
+      "title": "Manual records create confusion and delays",
+      "description": "When fees, staff payments, maintenance, and events are tracked across paper files or spreadsheets, information gets lost and decisions slow down.",
+      "point1": "Scattered records make it hard to know who paid what",
+      "point2": "Reconciling accounts wastes time and frustrates residents",
+      "point3": "Low transparency leads to doubt and complaints"
+    },
+    "solution": {
+      "tag": "Our solution",
+      "title": "One platform for the entire community",
+      "description": "RCHMS digitalizes operations end-to-end—fees, notices, events, reports—so the committee saves time and residents always see clear, trusted updates.",
+      "point1": "Online payments, automated receipts, and a central ledger",
+      "point2": "Real-time updates and transparent statements for residents",
+      "point3": "Smart insights for safety and daily operations"
+    }
+  },
+  "features": {
+    "title": "Everything your community needs",
+    "subtitle": "Collect fees, publish notices, track events, and keep residents informed—fast, clear, and fully traceable",
+    "items": {
+      "onlinePayment": {
+        "title": "Online fee payments & receipts",
+        "description": "Secure payments via SSLCommerz, bKash, Nagad and more—with instant digital receipts and ledger updates."
+      },
+      "payroll": {
+        "title": "Staff payroll management",
+        "description": "Pay Imams, guards, and cleaners on time with automated records and clear summaries."
+      },
+      "transparency": {
+        "title": "Transparent financial reports",
+        "description": "Residents can see dues, payments, and expense summaries anytime—less confusion, more trust."
+      },
+      "events": {
+        "title": "Events & fund drives",
+        "description": "Ramadan, Eid, charity drives—announcements, participation, and contributions in one place."
+      },
+      "bloodDonation": {
+        "title": "Community support network",
+        "description": "Coordinate blood donation, emergency help, and community services faster and better."
+      },
+      "security": {
+        "title": "Smarter security monitoring",
+        "description": "Alerts, monitoring, and reports make safety operations more effective."
+      }
+    }
+  },
+  "demo": {
+    "title": "See the entire community at a glance",
+    "subtitle": "A clean dashboard shows fees, dues, events, and safety updates so the committee and residents stay aligned.",
+    "badge1": "Live reports & insights",
+    "badge2": "Secure digital payments",
+    "badge3": "Smart safety updates"
+  },
+  "benefits": {
+    "title": "Clear benefits for every committee",
+    "subtitle": "Save time, reduce friction, and build resident trust",
+    "items": {
+      "transparency": {
+        "title": "Transparency & accountability",
+        "description": "Every transaction is visible, so questions are resolved faster."
+      },
+      "noHassle": {
+        "title": "Operations without hassle",
+        "description": "Payments, notices, and reports are automated and easy."
+      },
+      "smartSecure": {
+        "title": "Stronger safety oversight",
+        "description": "Monitoring and alerts help spot issues early."
+      },
+      "scalable": {
+        "title": "Scales as you grow",
+        "description": "Works for small committees and large communities alike."
+      }
+    }
+  },
+  "testimonials": {
+    "title": "What residents and committee say",
+    "subtitle": "Real experiences from everyday users",
+    "items": {
+      "testimonial1": {
+        "quote": "I pay fees online and get the receipt instantly—no office visits, no confusion.",
+        "author": "Resident",
+        "role": "Flat owner"
+      },
+      "testimonial2": {
+        "quote": "As treasurer, I get real-time reports and can make decisions quickly in meetings.",
+        "author": "Committee Member",
+        "role": "Treasurer"
+      },
+      "testimonial3": {
+        "quote": "With safety updates in one place, the whole community feels more secure.",
+        "author": "Resident",
+        "role": "Security committee member"
+      }
+    }
+  },
+  "cta": {
+    "tagline": "Ready to modernize your community?",
+    "title": "Start today with",
+    "titleHighlight": "clear & easy management",
+    "subtitle": "Want a demo or a custom setup for your committee? We’ll help you get started.",
+    "loginNow": "Login to Dashboard",
+    "requestAccess": "Request a Demo/Access"
+  },
+  "footer": {
+    "brand": "RCHMS",
+    "description": "Runner City Housing Management System — simple, transparent, and reliable community management.",
+    "quickLinks": "Quick Links",
+    "about": "About",
+    "features": "Features",
+    "contact": "Contact",
+    "privacyPolicy": "Privacy Policy",
+    "resources": "Resources",
+    "documentation": "Documentation",
+    "support": "Support",
+    "faq": "FAQ",
+    "contactUs": "Contact Us",
+    "address": "Runner City Housing Association",
+    "city": "Bogura, Bangladesh",
+    "copyright": "Runner City Housing Management System. All rights reserved.",
+    "developedBy": "Developed by"
+  },
+  "common": {
+    "loading": "Loading...",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "submit": "Submit",
+    "close": "Close",
+    "search": "Search",
+    "back": "Back",
+    "next": "Next"
+  }
+}

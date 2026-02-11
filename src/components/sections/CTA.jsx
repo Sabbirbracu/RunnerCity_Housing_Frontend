@@ -1,10 +1,12 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { ForgotPasswordForm } from "../forms/ForgetPasswordForm";
 import { LoginForm } from "../forms/LoginForm";
 import { SignupForm } from "../forms/SignUpForm";
 import { Modal } from "../modal/modal";
 
 export const CTA = () => {
+  const { t } = useTranslation();
 
   const [isModalOpen, setIsModalOpen]= useState(false);
   const [activeForm, setActiveForm] = useState("login");
@@ -46,20 +48,20 @@ export const CTA = () => {
         {/* Tagline */}
         <div className="inline-flex items-center gap-2 px-5 py-2 bg-white/20 backdrop-blur-md border border-white/20 rounded-full text-white text-sm font-semibold mb-6">
           <span className="w-2 h-2 bg-white rounded-full animate-pulse" />
-          Ready to Transform Your Community?
+          {t('cta.tagline')}
         </div>
 
         {/* Heading */}
         <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 tracking-tight">
-          Join Our Smarter,
+          {t('cta.title')}
           <span className="block bg-gradient-to-r from-white/95 to-white/70 bg-clip-text text-transparent">
-            Transparent Community
+            {t('cta.titleHighlight')}
           </span>
         </h2>
 
         {/* Subheading */}
         <p className="text-xl md:text-2xl text-white/90 mb-12 max-w-3xl mx-auto leading-relaxed">
-          Experience the future of community management with RCHMS.
+          {t('cta.subtitle')}
         </p>
 
         {/* CTA Buttons */}
@@ -70,7 +72,7 @@ export const CTA = () => {
             setIsModalOpen(true);
           }}
         >
-            Login Now
+            {t('cta.loginNow')}
           </button>
           <button className="min-w-[220px] h-14 px-8 bg-white/20 border-2 border-white/40 text-white font-semibold text-lg rounded-lg backdrop-blur-md shadow-xl hover:bg-white/30 transition-all z-10"
           onClick={()=>{
@@ -78,7 +80,7 @@ export const CTA = () => {
             setIsModalOpen(true);
           }}
           >
-            Request Access
+            {t('cta.requestAccess')}
           </button>
         </div>
       </div>

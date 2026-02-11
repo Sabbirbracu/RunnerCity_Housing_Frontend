@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import heroImage from "../../assets/city2.jpg";
 import { ForgotPasswordForm } from "../forms/ForgetPasswordForm";
 import { LoginForm } from "../forms/LoginForm";
@@ -8,6 +9,7 @@ import Button from "../ui/button";
 
 
 export const Hero = () => {
+  const { t } = useTranslation();
   const bgRef = useRef(null);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -55,21 +57,20 @@ export const Hero = () => {
         {/* Tagline Chip */}
         <div className="inline-flex items-center gap-2 px-5 py-2 bg-emerald-700/70 backdrop-blur-md border border-emerald-500/40 rounded-full text-white text-sm font-semibold mb-6">
           <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
-          Welcome to Runner City Housing
+          {t('hero.tagline')}
         </div>
 
         {/* Heading */}
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-tight tracking-tight">
-          Smarter Living
+          {t('hero.title')}
           <span className="block bg-gradient-to-r from-emerald-400/95 via-emerald-300/80 to-white/80 bg-clip-text text-transparent">
-            Together
+            {t('hero.titleHighlight')}
           </span>
         </h1>
 
         {/* Subtitle */}
         <p className="text-lg md:text-xl text-white/85 mb-10 max-w-3xl mx-auto leading-relaxed">
-          From fees to events, payroll, and AI-powered security — experience
-          transparent, simple, and intelligent community management.
+          {t('hero.subtitle')}
         </p>
 
         {/* CTA Buttons */}
@@ -80,14 +81,14 @@ export const Hero = () => {
             className="min-w-[220px] shadow-xl hover:shadow-2xl text-white"
             onClick = {()=> {setActiveForm("login"); setIsModalOpen(true)}}
           >
-            Login Now
+            {t('hero.loginNow')}
           </Button>
           <Button
             size="lg"
             className="min-w-[220px] bg-white/20 backdrop-blur-md border-2 border-white/30 text-white hover:bg-white/30 transition-all"
             onClick = {()=>window.location.href = "#features"}
           >
-            Explore Features
+            {t('hero.exploreFeatures')}
           </Button>
         </div>
       </div>

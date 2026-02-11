@@ -1,8 +1,11 @@
 import { CheckCircle, XCircle } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import problemImage from "../../assets/problem-illustration.jpg";
 import solutionImage from "../../assets/solution-illustration.jpg";
 
 export const ProblemSolution = () => {
+  const { t } = useTranslation();
+
   return (
     <section className="relative py-24 px-4 overflow-hidden bg-gradient-to-b from-gray-50 via-white to-gray-100">
       {/* Background Gradient */}
@@ -10,7 +13,7 @@ export const ProblemSolution = () => {
 
       <div className="container mx-auto max-w-7xl relative z-10">
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-20 text-gray-900">
-          Transforming Community Management
+          {t('problemSolution.title')}
         </h2>
 
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -32,27 +35,27 @@ export const ProblemSolution = () => {
               <div className="space-y-4">
                 <div className="inline-flex items-center gap-2 px-5 py-2 bg-red-100/50 text-red-600 rounded-full text-sm font-semibold backdrop-blur-sm shadow-sm">
                   <span className="w-2 h-2 bg-red-600 rounded-full animate-pulse" />
-                  The Challenge
+                  {t('problemSolution.problem.tag')}
                 </div>
                 <h3 className="text-3xl font-bold text-gray-900">
-                  Manual Management Creates Chaos
+                  {t('problemSolution.problem.title')}
                 </h3>
                 <div className="space-y-3 text-gray-700 leading-relaxed">
                   <p>
-                    Managing a housing community manually creates overwhelming complexity — from fees to staff coordination and facility maintenance.
+                    {t('problemSolution.problem.description')}
                   </p>
                   <ul className="space-y-2 pl-5 list-none">
                     <li className="flex items-start gap-2">
                       <XCircle className="w-5 h-5 text-red-500" />
-                      Paper-based records lead to errors and disputes
+                      {t('problemSolution.problem.point1')}
                     </li>
                     <li className="flex items-start gap-2">
                       <XCircle className="w-5 h-5 text-red-500" />
-                      Time-consuming manual processes for everything
+                      {t('problemSolution.problem.point2')}
                     </li>
                     <li className="flex items-start gap-2">
                       <XCircle className="w-5 h-5 text-red-500" />
-                      Lack of transparency breeds mistrust
+                      {t('problemSolution.problem.point3')}
                     </li>
                   </ul>
                 </div>
@@ -78,27 +81,27 @@ export const ProblemSolution = () => {
               <div className="space-y-4">
                 <div className="inline-flex items-center gap-2 px-5 py-2 bg-emerald-100/50 text-emerald-700 rounded-full text-sm font-semibold backdrop-blur-sm shadow-sm">
                   <span className="w-2 h-2 bg-emerald-600 rounded-full animate-pulse" />
-                  Our Solution
+                  {t('problemSolution.solution.tag')}
                 </div>
                 <h3 className="text-3xl font-bold text-gray-900">
-                  RCHMS Brings Digital Excellence
+                  {t('problemSolution.solution.title')}
                 </h3>
                 <div className="space-y-3 text-gray-700 leading-relaxed">
                   <p>
-                    Our platform digitalizes every aspect of community management, bringing transparency, efficiency, and peace of mind.
+                    {t('problemSolution.solution.description')}
                   </p>
                   <ul className="space-y-2 pl-5 list-none">
                     <li className="flex items-start gap-2">
                       <CheckCircle className="w-5 h-5 text-emerald-500" />
-                      Automated payments and digital record-keeping
+                      {t('problemSolution.solution.point1')}
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle className="w-5 h-5 text-emerald-500" />
-                      Real-time transparency for all residents
+                      {t('problemSolution.solution.point2')}
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle className="w-5 h-5 text-emerald-500" />
-                      AI-powered security and intelligent insights
+                      {t('problemSolution.solution.point3')}
                     </li>
                   </ul>
                 </div>

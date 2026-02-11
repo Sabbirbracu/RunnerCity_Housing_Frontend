@@ -1,6 +1,9 @@
 import { Building2, Mail } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 export const Footer = () => {
+  const { t } = useTranslation();
+
   return (
     <footer className="bg-gray-900 text-gray-100 py-16 px-4 border-t border-gray-700">
       <div className="container mx-auto">
@@ -9,36 +12,35 @@ export const Footer = () => {
           <div className="space-y-4">
             <div className="flex items-center gap-2">
               <Building2 className="w-8 h-8 text-green-500" />
-              <span className="text-xl font-bold">RCHMS</span>
+              <span className="text-xl font-bold">{t('footer.brand')}</span>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed">
-              Runner City Housing Management System - Simplifying community living through
-              technology.
+              {t('footer.description')}
             </p>
           </div>
 
           {/* Quick Links */}
           <div className="space-y-4">
-            <h3 className="font-bold text-lg text-green-500">Quick Links</h3>
+            <h3 className="font-bold text-lg text-green-500">{t('footer.quickLinks')}</h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <a href="#" className="text-gray-400 hover:text-green-500 transition-colors">
-                  About
+                  {t('footer.about')}
                 </a>
               </li>
               <li>
                 <a href="#" className="text-gray-400 hover:text-green-500 transition-colors">
-                  Features
+                  {t('footer.features')}
                 </a>
               </li>
               <li>
                 <a href="#" className="text-gray-400 hover:text-green-500 transition-colors">
-                  Contact
+                  {t('footer.contact')}
                 </a>
               </li>
               <li>
                 <a href="#" className="text-gray-400 hover:text-green-500 transition-colors">
-                  Privacy Policy
+                  {t('footer.privacyPolicy')}
                 </a>
               </li>
             </ul>
@@ -46,21 +48,21 @@ export const Footer = () => {
 
           {/* Resources */}
           <div className="space-y-4">
-            <h3 className="font-bold text-lg text-green-500">Resources</h3>
+            <h3 className="font-bold text-lg text-green-500">{t('footer.resources')}</h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <a href="#" className="text-gray-400 hover:text-green-500 transition-colors">
-                  Documentation
+                  {t('footer.documentation')}
                 </a>
               </li>
               <li>
                 <a href="#" className="text-gray-400 hover:text-green-500 transition-colors">
-                  Support
+                  {t('footer.support')}
                 </a>
               </li>
               <li>
                 <a href="#" className="text-gray-400 hover:text-green-500 transition-colors">
-                  FAQ
+                  {t('footer.faq')}
                 </a>
               </li>
             </ul>
@@ -68,14 +70,14 @@ export const Footer = () => {
 
           {/* Contact */}
           <div className="space-y-4">
-            <h3 className="font-bold text-lg text-green-500">Contact Us</h3>
+            <h3 className="font-bold text-lg text-green-500">{t('footer.contactUs')}</h3>
             <div className="space-y-3 text-sm">
               <div className="flex items-start gap-2">
                 <Building2 className="w-4 h-4 mt-1 text-green-500 flex-shrink-0" />
                 <p className="text-gray-400">
-                  Runner City Housing Association
+                  {t('footer.address')}
                   <br />
-                  Bogura, Bangladesh
+                  {t('footer.city')}
                 </p>
               </div>
               <div className="flex items-center gap-2">
@@ -93,12 +95,12 @@ export const Footer = () => {
 
         {/* Bottom Bar */}
 <div className="pt-8 border-t border-gray-800 text-center text-sm text-gray-500 flex flex-col md:flex-row justify-center items-center gap-2">
-  <p>© {new Date().getFullYear()} Runner City Housing Management System. All rights reserved.</p>
+  <p>© {new Date().getFullYear()} {t('footer.copyright')}</p>
   <span className="hidden md:inline">|</span>
   <p>
-    Developed by{" "}
+    {t('footer.developedBy')}{" "}
     <a 
-      href="https://your-portfolio-link.com" 
+      href="https://sabbirahmad.qullia.com" 
       target="_blank" 
       rel="noopener noreferrer"
       className="text-accent hover:underline font-bold hover:text-white transition-colors"

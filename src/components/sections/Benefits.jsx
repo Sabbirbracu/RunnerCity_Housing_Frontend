@@ -1,29 +1,32 @@
 import { CheckCircle2, Shield, TrendingUp, Zap } from "lucide-react";
-
-const benefits = [
-  {
-    icon: CheckCircle2,
-    title: "Transparency First",
-    description: "Everyone sees exactly where money goes.",
-  },
-  {
-    icon: Zap,
-    title: "No More Hassle",
-    description: "Payments and salaries, effortless.",
-  },
-  {
-    icon: Shield,
-    title: "Smart & Secure",
-    description: "AI keeps our housing safe.",
-  },
-  {
-    icon: TrendingUp,
-    title: "Scalable & Flexible",
-    description: "Built for Runner City, ready to grow.",
-  },
-];
+import { useTranslation } from "react-i18next";
 
 export const Benefits = () => {
+  const { t } = useTranslation();
+
+  const benefits = [
+    {
+      icon: CheckCircle2,
+      titleKey: "benefits.items.transparency.title",
+      descriptionKey: "benefits.items.transparency.description",
+    },
+    {
+      icon: Zap,
+      titleKey: "benefits.items.noHassle.title",
+      descriptionKey: "benefits.items.noHassle.description",
+    },
+    {
+      icon: Shield,
+      titleKey: "benefits.items.smartSecure.title",
+      descriptionKey: "benefits.items.smartSecure.description",
+    },
+    {
+      icon: TrendingUp,
+      titleKey: "benefits.items.scalable.title",
+      descriptionKey: "benefits.items.scalable.description",
+    },
+  ];
+
   return (
     <section id="benefits" className="relative py-32 px-4 bg-gradient-to-b from-gray-50 via-white to-gray-50 overflow-hidden">
       {/* Floating Background Blobs */}
@@ -36,10 +39,10 @@ export const Benefits = () => {
         {/* Section Heading */}
         <div className="text-center mb-24">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
-            Why We Use RCHMS
+            {t('benefits.title')}
           </h2>
           <p className="text-lg md:text-xl text-gray-700 max-w-2xl mx-auto leading-relaxed">
-            The benefits that make our community management seamless
+            {t('benefits.subtitle')}
           </p>
         </div>
 
@@ -59,9 +62,9 @@ export const Benefits = () => {
                 <div className="w-20 h-20 rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:shadow-[0_0_30px_rgba(16,185,129,0.4)]">
                   <benefit.icon className="w-10 h-10 text-white" />
                 </div>
-                <h3 className="text-xl md:text-xl font-semibold text-gray-900">{benefit.title}</h3>
+                <h3 className="text-xl md:text-xl font-semibold text-gray-900">{t(benefit.titleKey)}</h3>
                 <p className="text-gray-600 leading-snug text-sm md:text-base">
-                  {benefit.description}
+                  {t(benefit.descriptionKey)}
                 </p>
               </div>
             </div>

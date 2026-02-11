@@ -1,26 +1,26 @@
 import { Quote } from "lucide-react";
-
-const testimonials = [
-  {
-    quote: "Paying fees online is effortless — no more visiting the office.",
-    author: "Resident",
-    role: "Community Member",
-  },
-  {
-    quote:
-      "As treasurer, I can track finances in real time. Everyone trusts the system.",
-    author: "Committee Member",
-    role: "Financial Officer",
-  },
-  {
-    quote:
-      "The AI security features give us peace of mind about our community's safety.",
-    author: "Resident",
-    role: "Security Committee",
-  },
-];
+import { useTranslation } from "react-i18next";
 
 export const Testimonials = () => {
+  const { t } = useTranslation();
+
+  const testimonials = [
+    {
+      quoteKey: "testimonials.items.testimonial1.quote",
+      authorKey: "testimonials.items.testimonial1.author",
+      roleKey: "testimonials.items.testimonial1.role",
+    },
+    {
+      quoteKey: "testimonials.items.testimonial2.quote",
+      authorKey: "testimonials.items.testimonial2.author",
+      roleKey: "testimonials.items.testimonial2.role",
+    },
+    {
+      quoteKey: "testimonials.items.testimonial3.quote",
+      authorKey: "testimonials.items.testimonial3.author",
+      roleKey: "testimonials.items.testimonial3.role",
+    },
+  ];
   return (
     <section id="testimonials" className="relative py-32 px-4 bg-gradient-to-b from-emerald-50 via-white to-emerald-50 overflow-hidden">
       
@@ -32,10 +32,10 @@ export const Testimonials = () => {
         {/* Heading */}
         <div className="text-center mb-20">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
-            What Our Community Says
+            {t('testimonials.title')}
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Real feedback from residents and committee members
+            {t('testimonials.subtitle')}
           </p>
         </div>
 
@@ -55,14 +55,14 @@ export const Testimonials = () => {
               {/* Quote */}
               <div className="pt-8">
                 <p className="text-lg md:text-xl text-gray-800 leading-relaxed">
-                  “{testimonial.quote}”
+                  "{t(testimonial.quoteKey)}"
                 </p>
               </div>
 
               {/* Author */}
               <div className="pt-4 mt-6 border-t border-gray-200">
-                <p className="font-bold text-gray-900 text-lg">{testimonial.author}</p>
-                <p className="text-sm text-gray-500 mt-1">{testimonial.role}</p>
+                <p className="font-bold text-gray-900 text-lg">{t(testimonial.authorKey)}</p>
+                <p className="text-sm text-gray-500 mt-1">{t(testimonial.roleKey)}</p>
               </div>
             </div>
           ))}
