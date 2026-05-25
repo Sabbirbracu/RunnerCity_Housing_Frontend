@@ -28,7 +28,7 @@ export const CTA = () => {
   return (
     <section className="relative py-32 px-4 overflow-hidden">
       {/* Background Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-r from-emerald-700 via-green-600 to-teal-600" />
+      <div className="absolute inset-0 bg-gradient-to-r from-emerald-800 via-emerald-700 to-teal-700" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.1),transparent)] opacity-60" />
 
       {/* Floating Blobs */}
@@ -66,7 +66,7 @@ export const CTA = () => {
 
         {/* CTA Buttons */}
         <div className="relative flex flex-col sm:flex-row gap-5 justify-center items-center">
-          <button className="min-w-[220px] h-14 px-8 bg-white text-emerald-700 font-semibold text-lg rounded-lg shadow-2xl hover:shadow-xl hover:scale-105 transition-all z-10"
+          <button className="min-w-[220px] h-14 px-8 bg-white text-emerald-800 font-semibold text-lg rounded-lg shadow-2xl hover:shadow-xl hover:scale-105 transition-all z-10"
           onClick={()=>{
             setActiveForm("login");
             setIsModalOpen(true);

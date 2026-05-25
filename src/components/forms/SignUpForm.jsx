@@ -1,11 +1,13 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useSignupMutation } from "../../features/api/authApi";
 import { setCredentials } from "../../features/auth/authSlice";
 
 export const SignupForm = ({ onSwitch, onSuccess }) => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [signup, { isLoading }] = useSignupMutation();
@@ -30,7 +32,7 @@ export const SignupForm = ({ onSwitch, onSuccess }) => {
       const res = await signup(form).unwrap(); // unwrapping RTK Query result
       dispatch(setCredentials({ user: res.user }));
 
-      toast.success("Account created successfully! 🎉");
+      toast.success(t("signup.signupSuccess"));
 
       if (onSuccess) onSuccess(); // parent can close modal
       navigate("/"); // redirect to home page
@@ -38,7 +40,7 @@ export const SignupForm = ({ onSwitch, onSuccess }) => {
       console.error("Signup error:", err);
       // RTK Query error might be nested differently
       const message =
-        err?.data?.message || err?.error || "Signup failed. Please check your input.";
+        err?.data?.message || err?.error || t("signup.signupFailed");
       setFormError(message);
       toast.error(message);
     }
@@ -49,19 +51,19 @@ export const SignupForm = ({ onSwitch, onSuccess }) => {
       {/* Heading */}
       <div className="text-center space-y-2">
         <h2 className="text-3xl font-extrabold text-gray-900 tracking-tight">
-          Create Account 🚀
+          {t("signup.title")}
         </h2>
-        <p className="text-gray-500 text-sm">Join our community and claim your plot</p>
+        <p className="text-gray-500 text-sm">{t("signup.subtitle")}</p>
       </div>
 
       {/* Form */}
       <form className="space-y-5" onSubmit={handleSubmit}>
         {[
-          { label: "Full Name", name: "name", type: "text", placeholder: "Your Name" },
-          { label: "Email Address", name: "email", type: "email", placeholder: "you@example.com" },
-          { label: "Phone Number", name: "phone", type: "tel", placeholder: "+8801XXXXXXXXX" },
-          { label: "Plot Number", name: "plot_no", type: "text", placeholder: "e.g., P-101" },
-          { label: "Password", name: "password", type: "password", placeholder: "••••••••" },
+          { label: t("signup.fullName"), name: "name", type: "text", placeholder: t("signup.fullNamePlaceholder") },
+          { label: t("signup.emailLabel"), name: "email", type: "email", placeholder: t("signup.emailPlaceholder") },
+          { label: t("signup.phoneLabel"), name: "phone", type: "tel", placeholder: t("signup.phonePlaceholder") },
+          { label: t("signup.plotLabel"), name: "plot_no", type: "text", placeholder: t("signup.plotPlaceholder") },
+          { label: t("signup.passwordLabel"), name: "password", type: "password", placeholder: t("signup.passwordPlaceholder") },
         ].map((field) => (
           <div key={field.name}>
             <label className="block text-sm font-medium text-gray-700 mb-2">{field.label}</label>
@@ -91,18 +93,18 @@ export const SignupForm = ({ onSwitch, onSuccess }) => {
           className="w-full py-3 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-600 
             text-white font-semibold hover:scale-[1.02] hover:shadow-lg transition-all duration-200 disabled:opacity-60"
         >
-          {isLoading ? "Creating Account..." : "Sign Up"}
+          {isLoading ? t("signup.creatingAccount") : t("signup.signUp")}
         </button>
       </form>
 
       {/* Bottom Link */}
       <div className="text-center text-sm mt-4">
-        <span>Already have an account? </span>
+        <span>{t("signup.alreadyHaveAccount")}</span>
         <button
           onClick={() => onSwitch("login")}
           className="text-emerald-600 font-medium hover:underline"
         >
-          Login
+          {t("signup.login")}
         </button>
       </div>
     </div>

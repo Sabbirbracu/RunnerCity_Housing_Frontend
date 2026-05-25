@@ -120,7 +120,7 @@ export const Header = () => {
               </Button>
               <Button
                 size="md"
-                className="bg-gradient-to-r from-teal-900 to-emerald-500 text-white shadow-lg hover:from-emerald-600 hover:to-emerald-400 transition-all"
+                className="bg-gradient-to-r from-emerald-700 to-emerald-600 text-white shadow-lg hover:from-emerald-800 hover:to-emerald-700 transition-all"
                 onClick={() => {
                   setActiveForm("login");
                   setIsModalOpen(true);

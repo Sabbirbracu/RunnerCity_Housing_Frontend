@@ -11,7 +11,7 @@ export const Footer = () => {
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center gap-2">
-              <Building2 className="w-8 h-8 text-green-500" />
+              <Building2 className="w-8 h-8 text-emerald-500" />
               <span className="text-xl font-bold">{t('footer.brand')}</span>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed">
@@ -21,25 +21,25 @@ export const Footer = () => {
 
           {/* Quick Links */}
           <div className="space-y-4">
-            <h3 className="font-bold text-lg text-green-500">{t('footer.quickLinks')}</h3>
+            <h3 className="font-bold text-lg text-emerald-500">{t('footer.quickLinks')}</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="#" className="text-gray-400 hover:text-green-500 transition-colors">
+                <a href="#" className="text-gray-400 hover:text-emerald-400 transition-colors">
                   {t('footer.about')}
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-green-500 transition-colors">
+                <a href="#" className="text-gray-400 hover:text-emerald-400 transition-colors">
                   {t('footer.features')}
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-green-500 transition-colors">
+                <a href="#" className="text-gray-400 hover:text-emerald-400 transition-colors">
                   {t('footer.contact')}
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-green-500 transition-colors">
+                <a href="#" className="text-gray-400 hover:text-emerald-400 transition-colors">
                   {t('footer.privacyPolicy')}
                 </a>
               </li>
@@ -48,20 +48,20 @@ export const Footer = () => {
 
           {/* Resources */}
           <div className="space-y-4">
-            <h3 className="font-bold text-lg text-green-500">{t('footer.resources')}</h3>
+            <h3 className="font-bold text-lg text-emerald-500">{t('footer.resources')}</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="#" className="text-gray-400 hover:text-green-500 transition-colors">
+                <a href="#" className="text-gray-400 hover:text-emerald-400 transition-colors">
                   {t('footer.documentation')}
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-green-500 transition-colors">
+                <a href="#" className="text-gray-400 hover:text-emerald-400 transition-colors">
                   {t('footer.support')}
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-green-500 transition-colors">
+                <a href="#" className="text-gray-400 hover:text-emerald-400 transition-colors">
                   {t('footer.faq')}
                 </a>
               </li>
@@ -70,10 +70,10 @@ export const Footer = () => {
 
           {/* Contact */}
           <div className="space-y-4">
-            <h3 className="font-bold text-lg text-green-500">{t('footer.contactUs')}</h3>
+            <h3 className="font-bold text-lg text-emerald-500">{t('footer.contactUs')}</h3>
             <div className="space-y-3 text-sm">
               <div className="flex items-start gap-2">
-                <Building2 className="w-4 h-4 mt-1 text-green-500 flex-shrink-0" />
+                <Building2 className="w-4 h-4 mt-1 text-emerald-500 flex-shrink-0" />
                 <p className="text-gray-400">
                   {t('footer.address')}
                   <br />
@@ -81,10 +81,10 @@ export const Footer = () => {
                 </p>
               </div>
               <div className="flex items-center gap-2">
-                <Mail className="w-4 h-4 text-green-500 flex-shrink-0" />
+                <Mail className="w-4 h-4 text-emerald-500 flex-shrink-0" />
                 <a
                   href="mailto:info@runnercityhousing.com"
-                  className="text-gray-400 hover:text-green-500 transition-colors"
+                  className="text-gray-400 hover:text-emerald-400 transition-colors"
                 >
                   info@runnercityhousing.com
                 </a>

@@ -330,7 +330,7 @@ export const Sidebar = ({ role = "admin" }) => {
                   }
                   className={`flex items-center gap-3 px-4 py-2.5 rounded-xl w-full text-left transition ${
                     isActive
-                      ? "bg-gradient-to-r from-emerald-500 to-green-400 text-white font-semibold shadow-md"
+                      ? "bg-gradient-to-r from-emerald-600 to-emerald-500 text-white font-semibold shadow-md"
                       : "text-gray-500 hover:bg-gray-200"
                   }`}
                 >
@@ -357,7 +357,7 @@ export const Sidebar = ({ role = "admin" }) => {
                             onClick={() => handleNavigate(subItem.path)}
                             className={`block w-full text-left text-sm px-4 py-2 rounded-lg ${
                               isSubActive
-                                ? "bg-gradient-to-r from-emerald-500 to-green-400 text-white font-semibold"
+                                ? "bg-gradient-to-r from-emerald-600 to-emerald-500 text-white font-semibold"
                                 : "text-gray-600 hover:bg-gray-100"
                             }`}
                           >

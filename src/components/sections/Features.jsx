@@ -77,7 +77,7 @@ export const Features = () => {
               {/* Card Content */}
               <div className="relative z-10 p-8 flex flex-col items-center gap-6 text-center">
                 {/* Icon Container */}
-                <div className="w-20 h-20 rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:shadow-[0_0_30px_rgba(16,185,129,0.4)]">
+                <div className="w-20 h-20 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:shadow-[0_0_30px_rgba(5,150,105,0.35)]">
                   <feature.icon className="w-10 h-10 text-white" />
                 </div>
 

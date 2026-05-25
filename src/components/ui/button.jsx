@@ -9,15 +9,15 @@ const Button = ({ children, variant = "default", size = "default", className = "
     destructive:
       "bg-red-600 text-white hover:bg-red-700 shadow-md hover:shadow-lg",
     outline:
-      "border-2 border-emerald-600 bg-transparent text-emerald-600 hover:bg-emerald-600 hover:text-white transition-all shadow-sm",
+      "border-2 border-emerald-700 bg-transparent text-emerald-700 hover:bg-emerald-700 hover:text-white transition-all shadow-sm",
     secondary:
-      "bg-emerald-100 text-emerald-800 hover:bg-emerald-200 shadow-sm",
+      "bg-emerald-50 text-emerald-800 hover:bg-emerald-100 shadow-sm",
     ghost:
-      "bg-transparent text-emerald-600 hover:bg-emerald-50 hover:text-emerald-700 transition-colors",
+      "bg-transparent text-emerald-700 hover:bg-emerald-50 hover:text-emerald-800 transition-colors",
     link:
-      "text-emerald-600 underline-offset-4 hover:underline hover:text-emerald-700",
+      "text-emerald-700 underline-offset-4 hover:underline hover:text-emerald-800",
     hero:
-      "bg-gradient-to-r from-emerald-500 to-emerald-700 text-white hover:opacity-90 shadow-lg hover:shadow-xl transition-all font-semibold",
+      "bg-gradient-to-r from-emerald-600 to-emerald-700 text-white hover:from-emerald-700 hover:to-emerald-800 shadow-lg hover:shadow-xl transition-all font-semibold",
     cta:
       "bg-emerald-700 text-white hover:bg-emerald-800 shadow-md hover:shadow-lg transition-all font-semibold",
   };

@@ -49,13 +49,13 @@ export const Hero = () => {
         style={{ backgroundImage: `url(${heroImage})` }}
       >
         {/* Darker Green Overlay Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-emerald-900/75 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 via-emerald-900/70 to-emerald-950/40" />
       </div>
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center animate-fade-in">
         {/* Tagline Chip */}
-        <div className="inline-flex items-center gap-2 px-5 py-2 bg-emerald-700/70 backdrop-blur-md border border-emerald-500/40 rounded-full text-white text-sm font-semibold mb-6">
+        <div className="inline-flex items-center gap-2 px-5 py-2 bg-emerald-800/60 backdrop-blur-md border border-emerald-600/30 rounded-full text-white text-sm font-semibold mb-6">
           <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
           {t('hero.tagline')}
         </div>
@@ -63,7 +63,7 @@ export const Hero = () => {
         {/* Heading */}
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-tight tracking-tight">
           {t('hero.title')}
-          <span className="block bg-gradient-to-r from-emerald-400/95 via-emerald-300/80 to-white/80 bg-clip-text text-transparent">
+          <span className="block bg-gradient-to-r from-emerald-300 via-emerald-200 to-white/80 bg-clip-text text-transparent">
             {t('hero.titleHighlight')}
           </span>
         </h1>
