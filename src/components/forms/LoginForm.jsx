@@ -38,8 +38,19 @@ export const LoginForm = ({ onSwitch }) => {
       }
     } catch (err) {
       console.error("Login failed:", err);
-      // Backend returns specific messages for pending/rejected/suspended accounts
-      toast.error(err?.data?.message || t("login.loginFailed"));
+      // Map backend English messages to i18n keys
+      const backendMsg = err?.data?.message || "";
+      const messageMap = {
+        "Your account is pending admin approval.": t("login.statusPending"),
+        "Your account has been rejected. Contact admin for details.": t("login.statusRejected"),
+        "Your account has been suspended.": t("login.statusSuspended"),
+        "Your account is inactive.": t("login.statusInactive"),
+        "This account is no longer active.": t("login.statusDeceased"),
+        "User not found.": t("login.userNotFound"),
+        "Invalid credentials.": t("login.invalidCredentials"),
+      };
+      const localizedMsg = messageMap[backendMsg] || backendMsg || t("login.loginFailed");
+      toast.error(localizedMsg);
     }
   };
 

@@ -153,11 +153,18 @@
     "forgotPassword": "Forgot password?",
     "createAccount": "Create account",
     "loginSuccess": "Login successful!",
-    "loginFailed": "Login failed. Please try again."
+    "loginFailed": "Login failed. Please try again.",
+    "statusPending": "Your account is pending admin approval. Please wait.",
+    "statusRejected": "Your account has been rejected. Contact admin for details.",
+    "statusSuspended": "Your account has been suspended.",
+    "statusInactive": "Your account is inactive.",
+    "statusDeceased": "This account is no longer active.",
+    "userNotFound": "User not found.",
+    "invalidCredentials": "Invalid credentials."
   },
   "signup": {
     "title": "Create Account",
-    "subtitle": "Join your community in a few steps",
+    "subtitle": "Join Runner City Housing community in a few steps",
     "stepOf": "Step {{current}} of {{total}}",
     "step1": {
       "title": "Enter your plot number",
@@ -187,10 +194,10 @@
       }
     },
     "step3": {
-      "title": "A few more details",
+      "title": "Please Fill Up a few more details",
       "description": "Based on your role selection",
       "flatCount": "How many flats do you own?",
-      "flatCountPlaceholder": "e.g., 2",
+      "flatCountPlaceholder": "e.g.1, 2, 3, 4",
       "flatCountRequired": "Please enter number of flats",
       "relationship": "Your relationship with the owner",
       "relationshipRequired": "Please select a relationship",
@@ -204,7 +211,7 @@
       }
     },
     "step4": {
-      "title": "Personal Information",
+      "title": "Please Fill up the Personal Information",
       "description": "Tell us about yourself",
       "nameLabel": "Full Name",
       "namePlaceholder": "Your full name",

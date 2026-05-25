@@ -72,13 +72,18 @@ export const SignupForm = ({ onSwitch, onSuccess }) => {
     }
   };
 
-  // Helper: suggest corrected plot number (e.g., D-02 → D-2, but C-02 stays C-02)
+  // Helper: suggest corrected plot number (e.g., D-02 → D-2, A5 → A-5, but C-02 stays C-02)
   const getSuggestedPlot = (plotNo) => {
-    const match = plotNo.match(/^([A-Za-z])-0(\d)$/);
-    if (match) {
-      const prefix = match[1].toUpperCase();
-      if (prefix === "C") return null;
-      return `${prefix}-${match[2]}`;
+    // Case 1: Leading zero like D-02 → D-2 (skip C block which uses 01-10)
+    const leadingZero = plotNo.match(/^([A-Za-z])-0(\d)$/);
+    if (leadingZero) {
+      const prefix = leadingZero[1].toUpperCase();
+      if (prefix !== "C") return `${prefix}-${leadingZero[2]}`;
+    }
+    // Case 2: Missing hyphen like A5 → A-5
+    const missingHyphen = plotNo.match(/^([A-Za-z])(\d+)$/);
+    if (missingHyphen) {
+      return `${missingHyphen[1].toUpperCase()}-${missingHyphen[2]}`;
     }
     return null;
   };
@@ -223,11 +228,11 @@ export const SignupForm = ({ onSwitch, onSuccess }) => {
 
     try {
       await signup(payload).unwrap();
-      toast.success(t("signup.success"));
+      toast.success(t("signup.success"), { duration: 45000 });
       if (onSuccess) onSuccess();
     } catch (err) {
       const message = err?.data?.message || err?.error || t("signup.failed");
-      toast.error(message);
+      toast.error(message, { duration: 45000 });
     }
   };
 
