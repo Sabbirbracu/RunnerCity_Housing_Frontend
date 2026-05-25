@@ -156,23 +156,86 @@
     "loginFailed": "Login failed. Please try again."
   },
   "signup": {
-    "title": "Create Account 🚀",
-    "subtitle": "Join our community and claim your plot",
-    "fullName": "Full Name",
-    "fullNamePlaceholder": "Your Name",
-    "emailLabel": "Email Address",
-    "emailPlaceholder": "you@example.com",
-    "phoneLabel": "Phone Number",
-    "phonePlaceholder": "+8801XXXXXXXXX",
-    "plotLabel": "Plot Number",
-    "plotPlaceholder": "e.g., P-101",
-    "passwordLabel": "Password",
-    "passwordPlaceholder": "••••••••",
-    "creatingAccount": "Creating Account...",
-    "signUp": "Sign Up",
-    "signupSuccess": "Account created successfully! 🎉",
-    "signupFailed": "Signup failed. Please check your input.",
-    "alreadyHaveAccount": "Already have an account? ",
+    "title": "Create Account",
+    "subtitle": "Join your community in a few steps",
+    "stepOf": "Step {{current}} of {{total}}",
+    "step1": {
+      "title": "Enter your plot number",
+      "description": "We'll verify it exists in the system",
+      "placeholder": "e.g., A-12, P-101",
+      "required": "Plot number is required",
+      "invalid": "Invalid plot number. This plot does not exist in Runner City Housing.",
+      "suggestion": "Did you mean <bold>{{plot}}</bold>? Tap to use it."
+    },
+    "step2": {
+      "title": "What is your role?",
+      "forPlot": "For plot",
+      "selectRole": "Please select a role",
+      "ownerExists": "This plot already has an approved owner. You cannot register as owner.",
+      "pendingOwner": "Someone has already requested owner access for this plot and is awaiting approval. Please be patient or contact the admin.",
+      "roles": {
+        "full_owner": "Full Owner",
+        "full_owner_desc": "I own this entire plot/building",
+        "flat_owner": "Flat Owner",
+        "flat_owner_desc": "I own flat(s) in this building",
+        "family_resident": "Family/Resident",
+        "family_resident_desc": "I live here but I'm not the owner",
+        "tenant": "Tenant",
+        "tenant_desc": "I'm renting here",
+        "caretaker": "Caretaker",
+        "caretaker_desc": "I manage on behalf of the owner"
+      }
+    },
+    "step3": {
+      "title": "A few more details",
+      "description": "Based on your role selection",
+      "flatCount": "How many flats do you own?",
+      "flatCountPlaceholder": "e.g., 2",
+      "flatCountRequired": "Please enter number of flats",
+      "relationship": "Your relationship with the owner",
+      "relationshipRequired": "Please select a relationship",
+      "relationships": {
+        "Son": "Son",
+        "Daughter": "Daughter",
+        "Wife": "Wife",
+        "Husband": "Husband",
+        "Brother": "Brother",
+        "Other": "Other"
+      }
+    },
+    "step4": {
+      "title": "Personal Information",
+      "description": "Tell us about yourself",
+      "nameLabel": "Full Name",
+      "namePlaceholder": "Your full name",
+      "nameRequired": "Name is required",
+      "phoneLabel": "Phone Number",
+      "phonePlaceholder": "+8801XXXXXXXXX",
+      "phoneRequired": "Phone number is required",
+      "emailLabel": "Email Address",
+      "emailPlaceholder": "you@example.com",
+      "emailRequired": "Email is required"
+    },
+    "step5": {
+      "title": "Set Your Password",
+      "description": "Choose a strong password",
+      "passwordLabel": "Password",
+      "passwordPlaceholder": "••••••••",
+      "passwordMin": "Password must be at least 8 characters",
+      "confirmLabel": "Confirm Password",
+      "confirmPlaceholder": "••••••••",
+      "confirmMismatch": "Passwords do not match"
+    },
+    "nav": {
+      "back": "Back",
+      "next": "Next",
+      "verifying": "Verifying...",
+      "submitting": "Submitting...",
+      "submit": "Submit Request"
+    },
+    "success": "Your request has been submitted. Admin will approve shortly.",
+    "failed": "Signup failed. Please try again.",
+    "alreadyHaveAccount": "Already have an account?",
     "login": "Login"
   },
   "common": {

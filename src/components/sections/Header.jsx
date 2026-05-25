@@ -143,9 +143,7 @@ export const Header = () => {
           <SignupForm
             onSwitch={setActiveForm}
             onSuccess={() => {
-              toast.success("Account created successfully! 🎉");
               setIsModalOpen(false);
-              window.location.href = "/"; // redirect after success
             }}
           />
         ) : renderForm()}

@@ -31,13 +31,14 @@ export const LoginForm = ({ onSwitch }) => {
       // Redirect based on role
       if (res.user.role === "admin") {
         navigate("/admin-dashboard");
+      } else if (res.user.role === "full_owner" || res.user.role === "flat_owner") {
+        navigate("/owner-dashboard");
       } else {
         navigate("/dashboard");
       }
     } catch (err) {
       console.error("Login failed:", err);
-
-      // Show error toast
+      // Backend returns specific messages for pending/rejected/suspended accounts
       toast.error(err?.data?.message || t("login.loginFailed"));
     }
   };

@@ -10,14 +10,21 @@ export const authApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ["Auth"],
     }),
+
     signup: builder.mutation({
       query: (data) => ({
         url: "/auth/signup",
         method: "POST",
         body: data,
       }),
-      invalidatesTags: ["Auth"],
+      invalidatesTags: ["Auth", "Users"],
     }),
+
+    // GET /auth/check-plot/:plot_no — Verify plot exists
+    checkPlot: builder.query({
+      query: (plot_no) => `/auth/check-plot/${plot_no}`,
+    }),
+
     forgotPassword: builder.mutation({
       query: (email) => ({
         url: "/auth/forgot-password",
@@ -32,5 +39,6 @@ export const authApi = baseApi.injectEndpoints({
 export const {
   useLoginMutation,
   useSignupMutation,
+  useLazyCheckPlotQuery,
   useForgotPasswordMutation,
 } = authApi;

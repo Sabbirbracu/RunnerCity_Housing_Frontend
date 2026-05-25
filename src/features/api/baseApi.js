@@ -2,10 +2,9 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 // Base API slice
 export const baseApi = createApi({
-  reducerPath: "baseapi", // global key for this api slice
+  reducerPath: "baseapi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://runnercityhousing-backend.onrender.com",
-    // baseUrl: "http://localhost:5000/",
+    baseUrl: import.meta.env.VITE_API_BASE_URL,
     prepareHeaders: (headers, { getState }) => {
       const token = getState().auth?.token;
       if (token) {
@@ -14,6 +13,6 @@ export const baseApi = createApi({
       return headers;
     },
   }),
-  tagTypes: ["User", "Auth"], // optional caching tags
-  endpoints: () => ({}), // no endpoints here yet
+  tagTypes: ["Auth", "Users", "Plots", "Fees", "Payroll", "Contributions", "Expenses"],
+  endpoints: () => ({}),
 });

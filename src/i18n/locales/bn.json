@@ -156,23 +156,86 @@
     "loginFailed": "লগইন ব্যর্থ হয়েছে। আবার চেষ্টা করুন।"
   },
   "signup": {
-    "title": "অ্যাকাউন্ট তৈরি করুন 🚀",
-    "subtitle": "আমাদের কমিউনিটিতে যোগ দিন এবং আপনার প্লট দাবি করুন",
-    "fullName": "পুরো নাম",
-    "fullNamePlaceholder": "আপনার নাম",
-    "emailLabel": "ইমেইল ঠিকানা",
-    "emailPlaceholder": "you@example.com",
-    "phoneLabel": "ফোন নম্বর",
-    "phonePlaceholder": "+৮৮০১XXXXXXXXX",
-    "plotLabel": "প্লট নম্বর",
-    "plotPlaceholder": "যেমন, P-101",
-    "passwordLabel": "পাসওয়ার্ড",
-    "passwordPlaceholder": "••••••••",
-    "creatingAccount": "অ্যাকাউন্ট তৈরি হচ্ছে...",
-    "signUp": "সাইন আপ",
-    "signupSuccess": "সফলভাবে অ্যাকাউন্ট তৈরি হয়েছে! 🎉",
-    "signupFailed": "সাইন আপ ব্যর্থ হয়েছে। আপনার তথ্য যাচাই করুন।",
-    "alreadyHaveAccount": "ইতিমধ্যে অ্যাকাউন্ট আছে? ",
+    "title": "অ্যাকাউন্ট তৈরি করুন",
+    "subtitle": "কয়েকটি ধাপে আপনার কমিউনিটিতে যোগ দিন",
+    "stepOf": "ধাপ {{current}} / {{total}}",
+    "step1": {
+      "title": "আপনার প্লট নম্বর লিখুন",
+      "description": "আমরা যাচাই করব এটি সিস্টেমে আছে কিনা",
+      "placeholder": "যেমন, A-12, P-101",
+      "required": "প্লট নম্বর আবশ্যক",
+      "invalid": "ভুল প্লট নম্বর। রানার সিটি হাউজিং-এ এই প্লট নেই।",
+      "suggestion": "আপনি কি <bold>{{plot}}</bold> বোঝাতে চেয়েছেন? ট্যাপ করুন।"
+    },
+    "step2": {
+      "title": "আপনার ভূমিকা কী?",
+      "forPlot": "প্লট",
+      "selectRole": "একটি ভূমিকা নির্বাচন করুন",
+      "ownerExists": "এই প্লটে ইতিমধ্যে একজন অনুমোদিত মালিক আছেন। আপনি মালিক হিসেবে নিবন্ধন করতে পারবেন না।",
+      "pendingOwner": "এই প্লটের জন্য ইতিমধ্যে কেউ মালিকানার অনুরোধ করেছেন এবং অনুমোদনের অপেক্ষায় আছেন। অনুগ্রহ করে ধৈর্য ধরুন অথবা অ্যাডমিনের সাথে যোগাযোগ করুন।",
+      "roles": {
+        "full_owner": "পূর্ণ মালিক",
+        "full_owner_desc": "আমি এই পুরো প্লট/বিল্ডিংয়ের মালিক",
+        "flat_owner": "ফ্ল্যাট মালিক",
+        "flat_owner_desc": "আমি এই বিল্ডিংয়ে ফ্ল্যাটের মালিক",
+        "family_resident": "পরিবার/বাসিন্দা",
+        "family_resident_desc": "আমি এখানে থাকি কিন্তু মালিক নই",
+        "tenant": "ভাড়াটিয়া",
+        "tenant_desc": "আমি এখানে ভাড়া থাকি",
+        "caretaker": "কেয়ারটেকার",
+        "caretaker_desc": "আমি মালিকের পক্ষে দেখাশোনা করি"
+      }
+    },
+    "step3": {
+      "title": "আরও কিছু তথ্য",
+      "description": "আপনার ভূমিকা অনুযায়ী",
+      "flatCount": "আপনার কয়টি ফ্ল্যাট আছে?",
+      "flatCountPlaceholder": "যেমন, ২",
+      "flatCountRequired": "ফ্ল্যাটের সংখ্যা দিন",
+      "relationship": "মালিকের সাথে আপনার সম্পর্ক",
+      "relationshipRequired": "একটি সম্পর্ক নির্বাচন করুন",
+      "relationships": {
+        "Son": "ছেলে",
+        "Daughter": "মেয়ে",
+        "Wife": "স্ত্রী",
+        "Husband": "স্বামী",
+        "Brother": "ভাই",
+        "Other": "অন্যান্য"
+      }
+    },
+    "step4": {
+      "title": "ব্যক্তিগত তথ্য",
+      "description": "আপনার সম্পর্কে বলুন",
+      "nameLabel": "পুরো নাম",
+      "namePlaceholder": "আপনার পুরো নাম",
+      "nameRequired": "নাম আবশ্যক",
+      "phoneLabel": "ফোন নম্বর",
+      "phonePlaceholder": "+৮৮০১XXXXXXXXX",
+      "phoneRequired": "ফোন নম্বর আবশ্যক",
+      "emailLabel": "ইমেইল ঠিকানা",
+      "emailPlaceholder": "you@example.com",
+      "emailRequired": "ইমেইল আবশ্যক"
+    },
+    "step5": {
+      "title": "পাসওয়ার্ড সেট করুন",
+      "description": "একটি শক্তিশালী পাসওয়ার্ড বেছে নিন",
+      "passwordLabel": "পাসওয়ার্ড",
+      "passwordPlaceholder": "••••••••",
+      "passwordMin": "পাসওয়ার্ড কমপক্ষে ৮ অক্ষরের হতে হবে",
+      "confirmLabel": "পাসওয়ার্ড নিশ্চিত করুন",
+      "confirmPlaceholder": "••••••••",
+      "confirmMismatch": "পাসওয়ার্ড মিলছে না"
+    },
+    "nav": {
+      "back": "পিছনে",
+      "next": "পরবর্তী",
+      "verifying": "যাচাই হচ্ছে...",
+      "submitting": "জমা হচ্ছে...",
+      "submit": "অনুরোধ জমা দিন"
+    },
+    "success": "আপনার অনুরোধ জমা হয়েছে। অ্যাডমিন শীঘ্রই অনুমোদন করবেন।",
+    "failed": "সাইন আপ ব্যর্থ হয়েছে। আবার চেষ্টা করুন।",
+    "alreadyHaveAccount": "ইতিমধ্যে অ্যাকাউন্ট আছে?",
     "login": "লগইন"
   },
   "common": {
