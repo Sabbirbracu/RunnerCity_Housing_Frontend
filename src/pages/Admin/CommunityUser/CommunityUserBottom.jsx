@@ -42,15 +42,12 @@ const StatusBadge = ({ status }) => {
 };
 
 
-// --- User Details Modal for Pending Users ---
+// --- User Details Modal ---
 const UserDetailsModal = ({ user, isOpen, onClose, onApprove, onReject }) => {
   const [rejectReason, setRejectReason] = useState("");
   const [showRejectInput, setShowRejectInput] = useState(false);
 
   if (!user) return null;
-
-  // Debug: log what data we have for this user
-  console.log("UserDetailsModal - user data:", JSON.stringify(user, null, 2));
 
   const handleReject = () => {
     if (!showRejectInput) {
@@ -74,92 +71,152 @@ const UserDetailsModal = ({ user, isOpen, onClose, onApprove, onReject }) => {
     family_resident: "Family/Resident",
     tenant: "Tenant",
     caretaker: "Caretaker",
+    admin: "Admin",
   };
 
-  const InfoRow = ({ label, value }) => (
-    <div className="flex justify-between items-center py-2.5 border-b border-gray-50 last:border-0">
-      <span className="text-sm text-gray-500">{label}</span>
-      <span className="text-sm font-medium text-gray-900">{value || "—"}</span>
-    </div>
-  );
+  const roleBadgeColors = {
+    full_owner: "bg-blue-50 text-blue-700 ring-blue-200",
+    flat_owner: "bg-indigo-50 text-indigo-700 ring-indigo-200",
+    family_resident: "bg-purple-50 text-purple-700 ring-purple-200",
+    tenant: "bg-orange-50 text-orange-700 ring-orange-200",
+    caretaker: "bg-teal-50 text-teal-700 ring-teal-200",
+    admin: "bg-gray-800 text-white ring-gray-900",
+  };
+
+  const statusColors = {
+    pending: "bg-amber-50 text-amber-700 ring-amber-200",
+    approved: "bg-emerald-50 text-emerald-700 ring-emerald-200",
+    rejected: "bg-red-50 text-red-700 ring-red-200",
+    blocked: "bg-gray-100 text-gray-700 ring-gray-300",
+  };
+
+  const initials = user.name
+    ? user.name.split(" ").map(n => n[0]).join("").toUpperCase().slice(0, 2)
+    : "?";
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} title="">
-      <div className="space-y-5">
-        {/* Header */}
-        <div className="text-center pb-4 border-b border-gray-100">
-          <div className="w-16 h-16 mx-auto bg-amber-50 rounded-full flex items-center justify-center mb-3">
-            <HiEye className="w-8 h-8 text-amber-600" />
+      <div className="space-y-5 -mt-2">
+        {/* Profile Header */}
+        <div className="flex flex-col items-center pt-2 pb-4">
+          {/* Avatar */}
+          <div className="w-18 h-18 rounded-full bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center shadow-lg mb-3">
+            <span className="text-white text-xl font-bold">{initials}</span>
           </div>
-          <h3 className="text-xl font-bold text-gray-900">Registration Request</h3>
-          <p className="text-sm text-gray-500 mt-1">Review this user's signup details</p>
+          {/* Name & Status */}
+          <h3 className="text-lg font-bold text-gray-900">{user.name}</h3>
+          <div className="flex items-center gap-2 mt-1.5">
+            <span className={`inline-flex items-center px-2.5 py-0.5 text-xs font-semibold rounded-full ring-1 ring-inset capitalize ${statusColors[user.status] || "bg-gray-100 text-gray-600 ring-gray-200"}`}>
+              {user.status}
+            </span>
+            <span className={`inline-flex items-center px-2.5 py-0.5 text-xs font-semibold rounded-full ring-1 ring-inset ${roleBadgeColors[user.role] || "bg-gray-100 text-gray-600 ring-gray-200"}`}>
+              {roleLabels[user.role] || user.role}
+            </span>
+          </div>
         </div>
 
-        {/* User Info */}
-        <div className="bg-gray-50 rounded-xl p-4 space-y-0">
-          <InfoRow label="Name" value={user.name} />
-          <InfoRow label="Email" value={user.email} />
-          <InfoRow label="Phone" value={user.phone} />
-          <InfoRow label="Plot No" value={user.plot_no} />
-          <InfoRow label="Claimed Role" value={roleLabels[user.role] || user.role} />
-          {(user.role === "family_resident" || user.role === "caretaker") && (
-            <InfoRow
-              label="Relationship with Owner"
-              value={user.relationship_type
-                ? user.relationship_type.charAt(0).toUpperCase() + user.relationship_type.slice(1)
-                : "Not provided"}
-            />
-          )}
-          {user.role === "flat_owner" && (
-            <InfoRow
-              label="Number of Flats"
-              value={user.flat_count ? `${user.flat_count} flat(s)` : "Not provided"}
-            />
-          )}
-          <InfoRow
-            label="Requested On"
-            value={user.created_at ? new Date(user.created_at).toLocaleDateString("en-GB", {
-              day: "numeric", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit"
-            }) : "—"}
-          />
+        {/* Info Sections */}
+        <div className="space-y-3">
+          {/* Contact Section */}
+          <div className="bg-gray-50/80 rounded-xl border border-gray-100 overflow-hidden">
+            <div className="px-4 py-2 bg-gray-100/60 border-b border-gray-100">
+              <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Contact Information</p>
+            </div>
+            <div className="px-4 py-1 divide-y divide-gray-100">
+              <div className="flex items-center justify-between py-2.5">
+                <span className="text-xs text-gray-500 font-medium">Email</span>
+                <span className="text-sm text-gray-900 font-medium">{user.email}</span>
+              </div>
+              <div className="flex items-center justify-between py-2.5">
+                <span className="text-xs text-gray-500 font-medium">Phone</span>
+                <span className="text-sm text-gray-900 font-medium">{user.phone || "—"}</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Property Section */}
+          <div className="bg-gray-50/80 rounded-xl border border-gray-100 overflow-hidden">
+            <div className="px-4 py-2 bg-gray-100/60 border-b border-gray-100">
+              <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Property Details</p>
+            </div>
+            <div className="px-4 py-1 divide-y divide-gray-100">
+              <div className="flex items-center justify-between py-2.5">
+                <span className="text-xs text-gray-500 font-medium">Plot No</span>
+                <span className="text-sm text-gray-900 font-bold bg-emerald-50 px-2 py-0.5 rounded">{user.plot_no || "—"}</span>
+              </div>
+              {(user.role === "family_resident" || user.role === "caretaker") && (
+                <div className="flex items-center justify-between py-2.5">
+                  <span className="text-xs text-gray-500 font-medium">Relationship</span>
+                  <span className="text-sm text-gray-900 font-medium">
+                    {user.relationship_type
+                      ? user.relationship_type.charAt(0).toUpperCase() + user.relationship_type.slice(1)
+                      : "Not provided"}
+                  </span>
+                </div>
+              )}
+              {user.role === "flat_owner" && (
+                <div className="flex items-center justify-between py-2.5">
+                  <span className="text-xs text-gray-500 font-medium">Flats Owned</span>
+                  <span className="text-sm text-gray-900 font-medium">
+                    {user.flat_count ? `${user.flat_count}` : "Not provided"}
+                  </span>
+                </div>
+              )}
+              <div className="flex items-center justify-between py-2.5">
+                <span className="text-xs text-gray-500 font-medium">
+                  {user.status === "pending" ? "Requested" : "Joined"}
+                </span>
+                <span className="text-sm text-gray-900 font-medium">
+                  {user.created_at
+                    ? new Date(user.created_at).toLocaleDateString("en-GB", {
+                        day: "numeric", month: "short", year: "numeric"
+                      })
+                    : "—"}
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Reject Reason Input */}
         {showRejectInput && (
           <div className="animate-fadeIn">
-            <label className="block text-sm font-medium text-gray-700 mb-1.5">
-              Rejection reason (optional)
+            <label className="block text-xs font-semibold text-gray-600 uppercase tracking-wider mb-1.5">
+              Rejection Reason (optional)
             </label>
             <textarea
               value={rejectReason}
               onChange={(e) => setRejectReason(e.target.value)}
               placeholder="e.g., Duplicate request, invalid plot claim..."
               rows={2}
-              className="w-full px-3 py-2 rounded-lg border border-gray-200 text-sm
-                focus:ring-2 focus:ring-red-300 focus:border-red-400 outline-none resize-none"
+              className="w-full px-3 py-2.5 rounded-xl border border-gray-200 text-sm bg-white
+                focus:ring-2 focus:ring-red-200 focus:border-red-300 outline-none resize-none
+                placeholder:text-gray-400"
             />
           </div>
         )}
 
-        {/* Action Buttons */}
-        <div className="flex gap-3 pt-2">
-          <button
-            onClick={handleReject}
-            className="flex-1 py-2.5 px-4 rounded-xl border-2 border-red-200 text-red-600 font-semibold text-sm
-              hover:bg-red-50 hover:border-red-300 transition-all"
-          >
-            <HiXCircle className="w-4 h-4 inline mr-1.5 -mt-0.5" />
-            {showRejectInput ? "Confirm Reject" : "Reject"}
-          </button>
-          <button
-            onClick={handleApprove}
-            className="flex-1 py-2.5 px-4 rounded-xl bg-emerald-600 text-white font-semibold text-sm
-              hover:bg-emerald-700 transition-all shadow-sm"
-          >
-            <HiCheckCircle className="w-4 h-4 inline mr-1.5 -mt-0.5" />
-            Approve
-          </button>
-        </div>
+        {/* Action Buttons — only for pending users */}
+        {user.status === "pending" && (
+          <div className="flex gap-3 pt-1">
+            <button
+              onClick={handleReject}
+              className="flex-1 py-2.5 px-4 rounded-xl border-2 border-red-200 text-red-600 font-semibold text-sm
+                hover:bg-red-50 hover:border-red-300 transition-all"
+            >
+              <HiXCircle className="w-4 h-4 inline mr-1.5 -mt-0.5" />
+              {showRejectInput ? "Confirm Reject" : "Reject"}
+            </button>
+            <button
+              onClick={handleApprove}
+              className="flex-1 py-2.5 px-4 rounded-xl bg-emerald-600 text-white font-semibold text-sm
+                hover:bg-emerald-700 transition-all shadow-sm"
+            >
+              <HiCheckCircle className="w-4 h-4 inline mr-1.5 -mt-0.5" />
+              Approve
+            </button>
+          </div>
+        )}
       </div>
     </Modal>
   );
@@ -274,7 +331,7 @@ const CommunityUserBottom = ({
             
             {user.status === "approved" && (
               <>
-                <DropdownMenuItem onClick={() => handleViewProfile(userId)}>
+                <DropdownMenuItem onClick={() => openDetailsModal(user)}>
                   <HiEye className="w-4 h-4 mr-2 text-indigo-500" /> View Profile
                 </DropdownMenuItem>
                 <DropdownMenuItem 

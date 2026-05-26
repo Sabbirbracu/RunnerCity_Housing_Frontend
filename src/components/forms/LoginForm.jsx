@@ -38,19 +38,33 @@ export const LoginForm = ({ onSwitch }) => {
       }
     } catch (err) {
       console.error("Login failed:", err);
-      // Map backend English messages to i18n keys
       const backendMsg = err?.data?.message || "";
+      const backendStatus = err?.data?.status || "";
+      const backendReason = err?.data?.reason || "";
+
+      // Map backend English messages to i18n keys
       const messageMap = {
         "Your account is pending admin approval.": t("login.statusPending"),
-        "Your account has been rejected. Contact admin for details.": t("login.statusRejected"),
         "Your account has been suspended.": t("login.statusSuspended"),
         "Your account is inactive.": t("login.statusInactive"),
         "This account is no longer active.": t("login.statusDeceased"),
         "User not found.": t("login.userNotFound"),
         "Invalid credentials.": t("login.invalidCredentials"),
       };
-      const localizedMsg = messageMap[backendMsg] || backendMsg || t("login.loginFailed");
-      toast.error(localizedMsg);
+
+      let localizedMsg;
+
+      // Special handling for rejected — include reason
+      if (backendStatus === "rejected" || backendMsg.includes("rejected")) {
+        localizedMsg = t("login.statusRejected");
+        if (backendReason) {
+          localizedMsg += `\n${t("login.rejectionReason")}: ${backendReason}`;
+        }
+      } else {
+        localizedMsg = messageMap[backendMsg] || backendMsg || t("login.loginFailed");
+      }
+
+      toast.error(localizedMsg, { duration: 40000 });
     }
   };
 

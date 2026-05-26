@@ -160,7 +160,8 @@
     "statusInactive": "আপনার অ্যাকাউন্ট নিষ্ক্রিয়।",
     "statusDeceased": "এই অ্যাকাউন্ট আর সক্রিয় নেই।",
     "userNotFound": "ব্যবহারকারী পাওয়া যায়নি।",
-    "invalidCredentials": "ভুল ইমেইল বা পাসওয়ার্ড।"
+    "invalidCredentials": "ভুল ইমেইল বা পাসওয়ার্ড।",
+    "rejectionReason": "কারণ"
   },
   "signup": {
     "title": "অ্যাকাউন্ট তৈরি করুন",
