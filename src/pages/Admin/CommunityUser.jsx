@@ -20,7 +20,7 @@ const CommunityUser = () => {
 
   // Handlers
   const handleApprove = async (id) => { try { await approveUser(id).unwrap(); } catch (err) { console.error(err); } };
-  const handleReject = async (id) => { try { await rejectUser(id).unwrap(); } catch (err) { console.error(err); } };
+  const handleReject = async ({ id, reason }) => { try { await rejectUser({ id, reason }).unwrap(); } catch (err) { console.error(err); } };
   const handleBlock = (id) => console.log("Block user", id);
   const handleUnblock = (id) => console.log("Unblock user", id);
 

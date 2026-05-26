@@ -2,10 +2,10 @@
 
 import { useState } from "react";
 import PermissionModal from "../../../components/modal/PermissionModal";
+import { Modal } from "../../../components/modal/modal";
 import CustomTable from "../../../components/ui/CustomTable";
 import { DropdownMenu, DropdownMenuItem } from "../../../components/ui/DropdownMenu";
 
-// IMPORTED REACT ICONS (using Heroicons/Solid as an example)
 import {
   HiBan,
   HiCheckCircle,
@@ -16,9 +16,9 @@ import {
 } from 'react-icons/hi';
 
 
-// --- Helper function for modern status badges (No change here) ---
+// --- Helper function for modern status badges ---
 const StatusBadge = ({ status }) => {
-  const baseClasses = "inline-flex items-center px-3 py-1.5 text-xs font-bold rounded-full capitalize transition-colors duration-200"; // Changed font-semibold to font-bold for stronger visual weight
+  const baseClasses = "inline-flex items-center px-3 py-1.5 text-xs font-bold rounded-full capitalize transition-colors duration-200";
   let colorClasses = "";
 
   switch (status) {
@@ -42,6 +42,130 @@ const StatusBadge = ({ status }) => {
 };
 
 
+// --- User Details Modal for Pending Users ---
+const UserDetailsModal = ({ user, isOpen, onClose, onApprove, onReject }) => {
+  const [rejectReason, setRejectReason] = useState("");
+  const [showRejectInput, setShowRejectInput] = useState(false);
+
+  if (!user) return null;
+
+  // Debug: log what data we have for this user
+  console.log("UserDetailsModal - user data:", JSON.stringify(user, null, 2));
+
+  const handleReject = () => {
+    if (!showRejectInput) {
+      setShowRejectInput(true);
+      return;
+    }
+    onReject(user.user_id, rejectReason);
+    setShowRejectInput(false);
+    setRejectReason("");
+    onClose();
+  };
+
+  const handleApprove = () => {
+    onApprove(user.user_id);
+    onClose();
+  };
+
+  const roleLabels = {
+    full_owner: "Full Owner",
+    flat_owner: "Flat Owner",
+    family_resident: "Family/Resident",
+    tenant: "Tenant",
+    caretaker: "Caretaker",
+  };
+
+  const InfoRow = ({ label, value }) => (
+    <div className="flex justify-between items-center py-2.5 border-b border-gray-50 last:border-0">
+      <span className="text-sm text-gray-500">{label}</span>
+      <span className="text-sm font-medium text-gray-900">{value || "—"}</span>
+    </div>
+  );
+
+  return (
+    <Modal isOpen={isOpen} onClose={onClose} title="">
+      <div className="space-y-5">
+        {/* Header */}
+        <div className="text-center pb-4 border-b border-gray-100">
+          <div className="w-16 h-16 mx-auto bg-amber-50 rounded-full flex items-center justify-center mb-3">
+            <HiEye className="w-8 h-8 text-amber-600" />
+          </div>
+          <h3 className="text-xl font-bold text-gray-900">Registration Request</h3>
+          <p className="text-sm text-gray-500 mt-1">Review this user's signup details</p>
+        </div>
+
+        {/* User Info */}
+        <div className="bg-gray-50 rounded-xl p-4 space-y-0">
+          <InfoRow label="Name" value={user.name} />
+          <InfoRow label="Email" value={user.email} />
+          <InfoRow label="Phone" value={user.phone} />
+          <InfoRow label="Plot No" value={user.plot_no} />
+          <InfoRow label="Claimed Role" value={roleLabels[user.role] || user.role} />
+          {(user.role === "family_resident" || user.role === "caretaker") && (
+            <InfoRow
+              label="Relationship with Owner"
+              value={user.relationship_type
+                ? user.relationship_type.charAt(0).toUpperCase() + user.relationship_type.slice(1)
+                : "Not provided"}
+            />
+          )}
+          {user.role === "flat_owner" && (
+            <InfoRow
+              label="Number of Flats"
+              value={user.flat_count ? `${user.flat_count} flat(s)` : "Not provided"}
+            />
+          )}
+          <InfoRow
+            label="Requested On"
+            value={user.created_at ? new Date(user.created_at).toLocaleDateString("en-GB", {
+              day: "numeric", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit"
+            }) : "—"}
+          />
+        </div>
+
+        {/* Reject Reason Input */}
+        {showRejectInput && (
+          <div className="animate-fadeIn">
+            <label className="block text-sm font-medium text-gray-700 mb-1.5">
+              Rejection reason (optional)
+            </label>
+            <textarea
+              value={rejectReason}
+              onChange={(e) => setRejectReason(e.target.value)}
+              placeholder="e.g., Duplicate request, invalid plot claim..."
+              rows={2}
+              className="w-full px-3 py-2 rounded-lg border border-gray-200 text-sm
+                focus:ring-2 focus:ring-red-300 focus:border-red-400 outline-none resize-none"
+            />
+          </div>
+        )}
+
+        {/* Action Buttons */}
+        <div className="flex gap-3 pt-2">
+          <button
+            onClick={handleReject}
+            className="flex-1 py-2.5 px-4 rounded-xl border-2 border-red-200 text-red-600 font-semibold text-sm
+              hover:bg-red-50 hover:border-red-300 transition-all"
+          >
+            <HiXCircle className="w-4 h-4 inline mr-1.5 -mt-0.5" />
+            {showRejectInput ? "Confirm Reject" : "Reject"}
+          </button>
+          <button
+            onClick={handleApprove}
+            className="flex-1 py-2.5 px-4 rounded-xl bg-emerald-600 text-white font-semibold text-sm
+              hover:bg-emerald-700 transition-all shadow-sm"
+          >
+            <HiCheckCircle className="w-4 h-4 inline mr-1.5 -mt-0.5" />
+            Approve
+          </button>
+        </div>
+      </div>
+    </Modal>
+  );
+};
+
+
 // --- Component Implementation ---
 
 const CommunityUserBottom = ({
@@ -56,6 +180,8 @@ const CommunityUserBottom = ({
 }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
+  const [detailsModalOpen, setDetailsModalOpen] = useState(false);
+  const [detailsUser, setDetailsUser] = useState(null);
 
   const openDeleteModal = (user) => {
     setSelectedUser(user);
@@ -73,31 +199,39 @@ const CommunityUserBottom = ({
     }
   };
 
+  const openDetailsModal = (user) => {
+    setDetailsUser(user);
+    setDetailsModalOpen(true);
+  };
+
+  const handleRejectWithReason = async (userId, reason) => {
+    try {
+      await handleReject({ id: userId, reason });
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   const columns = [
     { 
-      // IMPROVEMENT: Added 'font-bold' to headerClassName
       header: "Name", 
       accessor: "name", 
       headerClassName: "w-1/4 font-bold", 
       cellClassName: "font-medium text-gray-900",
     },
     { 
-      // IMPROVEMENT: Added 'font-bold' to headerClassName
       header: "Email", 
       accessor: "email",
       headerClassName: "font-bold",
       cellClassName: "text-gray-600",
     },
     { 
-      // IMPROVEMENT: Added 'font-bold' to headerClassName
       header: "Role", 
       accessor: "role",
       headerClassName: "font-bold",
       cellClassName: "capitalize text-gray-700",
     },
     {
-      // IMPROVEMENT: Added 'font-bold' to headerClassName
       header: "Status",
       accessor: "status",
       headerClassName: "font-bold",
@@ -105,7 +239,6 @@ const CommunityUserBottom = ({
       cellClassName: "w-[120px]",
     },
     {
-      // IMPROVEMENT: Added 'font-bold' to headerClassName
       header: "Actions",
       accessor: "actions",
       headerClassName: "text-right font-bold",
@@ -131,16 +264,10 @@ const CommunityUserBottom = ({
             {user.status === "pending" && (
               <>
                 <DropdownMenuItem 
-                  onClick={() => handleApprove(userId)} 
-                  className="text-green-600 hover:bg-green-50"
+                  onClick={() => openDetailsModal(user)} 
+                  className="text-indigo-600 hover:bg-indigo-50"
                 >
-                  <HiCheckCircle className="w-4 h-4 mr-2 text-green-500" /> Approve User
-                </DropdownMenuItem>
-                <DropdownMenuItem 
-                  onClick={() => handleReject(userId)} 
-                  className="text-red-600 hover:bg-red-50"
-                >
-                  <HiXCircle className="w-4 h-4 mr-2 text-red-500" /> Reject
+                  <HiEye className="w-4 h-4 mr-2 text-indigo-500" /> View Details
                 </DropdownMenuItem>
               </>
             )}
@@ -183,14 +310,11 @@ const CommunityUserBottom = ({
 
   return (
     <>
-      {/* IMPROVEMENT: Removed padding from container and moved it to the table 
-        component, which often gives the table a cleaner full-width look within
-        a card-style wrapper. 
-      */}
       <div className="bg-white rounded-xl shadow-2xl border border-gray-200 overflow-hidden">
          <CustomTable columns={columns} data={users} />
       </div>
 
+      {/* Delete Confirmation Modal */}
       {modalOpen && selectedUser && (
         <PermissionModal
           title="Confirm Deletion"
@@ -199,6 +323,15 @@ const CommunityUserBottom = ({
           onCancel={() => setModalOpen(false)}
         />
       )}
+
+      {/* User Details Modal for Pending Users */}
+      <UserDetailsModal
+        user={detailsUser}
+        isOpen={detailsModalOpen}
+        onClose={() => { setDetailsModalOpen(false); setDetailsUser(null); }}
+        onApprove={(id) => handleApprove(id)}
+        onReject={handleRejectWithReason}
+      />
     </>
   );
 };
