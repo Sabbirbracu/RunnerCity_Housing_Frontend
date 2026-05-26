@@ -8,6 +8,9 @@ import Finances from "./pages/Admin/Finances";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import { Dashboard } from "./pages/Owner/Dashboard";
+import MyFees from "./pages/User/MyFees";
+import Notices from "./pages/User/Notices";
+import Events from "./pages/User/Events";
 import Settings from "./pages/Settings/Settings";
 export const RootRouter = () => {
   const { token, user } = useSelector((state) => state.auth);
@@ -36,6 +39,9 @@ export const RootRouter = () => {
         {isLoggedIn && (
           <Route element={<AdminLayout />}>
             <Route path="/dashboard" element={<Dashboard />}/>
+            <Route path="/my-fees" element={<MyFees />}/>
+            <Route path="/notices" element={<Notices />}/>
+            <Route path="/events" element={<Events />}/>
             <Route path="/settings" element={<Settings />} />
           </Route>
         )}
