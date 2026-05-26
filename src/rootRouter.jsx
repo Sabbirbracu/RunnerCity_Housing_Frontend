@@ -4,6 +4,7 @@ import { AdminLayout } from "./layouts/adminLayout";
 import { AdminDashboard } from "./pages/Admin/AdminDashboard";
 import CommunityPlots from "./pages/Admin/CommunityPlots";
 import CommunityUser from "./pages/Admin/CommunityUser";
+import Finances from "./pages/Admin/Finances";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import { Dashboard } from "./pages/Owner/Dashboard";
@@ -12,7 +13,7 @@ export const RootRouter = () => {
   const { token, user } = useSelector((state) => state.auth);
 
   const isAdmin = token && user?.role === "admin";
-  const isOwner = token && user?.role !== "Owner";
+  const isLoggedIn = token && user?.role !== "admin";
 
   return (
     <BrowserRouter>
@@ -20,20 +21,21 @@ export const RootRouter = () => {
         {/* Public */}
         <Route path="/" element={<Home />} />
 
-        {/* User Dashboard */}
-        {isOwner && (
+        {/* Admin Dashboard */}
+        {isAdmin && (
           <Route element={<AdminLayout />}>
-            <Route path="/dashboard" element={<Dashboard />}/>
+            <Route path="/admin-dashboard" element={<AdminDashboard />}/>
+            <Route path="/admin/finances" element={<Finances />}/>
+            <Route path="/community/users" element={<CommunityUser />} />
+            <Route path="/community/plots" element={<CommunityPlots />}/>
             <Route path="/settings" element={<Settings />} />
           </Route>
         )}
 
-        
-        {isAdmin && (
+        {/* Non-admin logged-in users */}
+        {isLoggedIn && (
           <Route element={<AdminLayout />}>
-            <Route path="/admin-dashboard" element={<AdminDashboard />}/>
-            <Route path="/community/users" element={<CommunityUser />} />
-            <Route path="/community/plots" element={<CommunityPlots />}/>
+            <Route path="/dashboard" element={<Dashboard />}/>
             <Route path="/settings" element={<Settings />} />
           </Route>
         )}
