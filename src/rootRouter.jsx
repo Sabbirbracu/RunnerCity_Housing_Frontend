@@ -7,6 +7,7 @@ import CommunityUser from "./pages/Admin/CommunityUser";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import { Dashboard } from "./pages/Owner/Dashboard";
+import Settings from "./pages/Settings/Settings";
 export const RootRouter = () => {
   const { token, user } = useSelector((state) => state.auth);
 
@@ -23,9 +24,7 @@ export const RootRouter = () => {
         {isOwner && (
           <Route element={<AdminLayout />}>
             <Route path="/dashboard" element={<Dashboard />}/>
-            {/* <Route path="/community/users" element={<CommunityUser />} />
-            <Route path="/community/plots" element={<CommunityPlots />}/> */}
-            {/* Add more admin pages here */}
+            <Route path="/settings" element={<Settings />} />
           </Route>
         )}
 
@@ -35,7 +34,7 @@ export const RootRouter = () => {
             <Route path="/admin-dashboard" element={<AdminDashboard />}/>
             <Route path="/community/users" element={<CommunityUser />} />
             <Route path="/community/plots" element={<CommunityPlots />}/>
-            {/* Add more admin pages here */}
+            <Route path="/settings" element={<Settings />} />
           </Route>
         )}
 

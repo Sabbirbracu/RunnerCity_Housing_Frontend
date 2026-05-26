@@ -100,8 +100,12 @@ const UserDetailsModal = ({ user, isOpen, onClose, onApprove, onReject }) => {
         {/* Profile Header */}
         <div className="flex flex-col items-center pt-2 pb-4">
           {/* Avatar */}
-          <div className="w-18 h-18 rounded-full bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center shadow-lg mb-3">
-            <span className="text-white text-xl font-bold">{initials}</span>
+          <div className="w-18 h-18 rounded-full overflow-hidden bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center shadow-lg mb-3">
+            {user.avatar_url ? (
+              <img src={user.avatar_url} alt={user.name} className="w-full h-full object-cover" />
+            ) : (
+              <span className="text-white text-xl font-bold">{initials}</span>
+            )}
           </div>
           {/* Name & Status */}
           <h3 className="text-lg font-bold text-gray-900">{user.name}</h3>
@@ -275,6 +279,23 @@ const CommunityUserBottom = ({
       accessor: "name", 
       headerClassName: "w-1/4 font-bold", 
       cellClassName: "font-medium text-gray-900",
+      render: (user) => {
+        const initials = user.name
+          ? user.name.split(" ").map(n => n[0]).join("").toUpperCase().slice(0, 2)
+          : "?";
+        return (
+          <div className="flex items-center gap-2.5">
+            {user.avatar_url ? (
+              <img src={user.avatar_url} alt={user.name} className="w-8 h-8 rounded-full object-cover bg-gradient-to-br from-emerald-500 to-teal-600 flex-shrink-0" />
+            ) : (
+              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center flex-shrink-0">
+                <span className="text-white text-xs font-bold">{initials}</span>
+              </div>
+            )}
+            <span>{user.name}</span>
+          </div>
+        );
+      },
     },
     { 
       header: "Email", 

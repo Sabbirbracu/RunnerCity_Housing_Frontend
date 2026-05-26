@@ -1,19 +1,22 @@
 // src/pages/Admin/AdminDashboard.jsx
 import { AlertCircle, BarChart, DollarSign, TrendingDown } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { CollectionExpenseOvertimeChart } from "../../components/admin/CollectionExpenseOvertimeChart";
 import { ExpenseBreakdownWidget } from "../../components/admin/ExpenseBreakdownWidget";
 import { KPIWidget } from "../../components/admin/KPIWidget";
 import { RecentTransactionsTable } from "../../components/admin/RecentTransactionsTable";
 
 export const AdminDashboard = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="space-y-6">
       {/* Top Section */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-6">
-        <h1 className="text-xl md:text-2xl font-bold text-gray-800">Admin Dashboard</h1>
+        <h1 className="text-xl md:text-2xl font-bold text-gray-800">{t("dashboard.title")}</h1>
         <input
           type="text"
-          placeholder="Search..."
+          placeholder={t("dashboard.searchPlaceholder")}
           className="w-full sm:w-auto px-4 py-2 rounded-lg border border-gray-300 outline-none focus:ring-2 focus:ring-emerald-500"
         />
       </div>
@@ -21,7 +24,7 @@ export const AdminDashboard = () => {
       {/* KPI Widgets */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
         <KPIWidget
-          title="Total Collected Fees (৳)"
+          title={t("dashboard.totalCollected")}
           value="৳1,25,000"
           change="+12%"
           icon={DollarSign}
@@ -29,7 +32,7 @@ export const AdminDashboard = () => {
         />
 
         <KPIWidget
-          title="Total Expenses (৳)"
+          title={t("dashboard.totalExpenses")}
           value="৳65,000"
           change="-5%"
           icon={TrendingDown}
@@ -37,7 +40,7 @@ export const AdminDashboard = () => {
         />
 
         <KPIWidget
-          title="Net Balance (৳)"
+          title={t("dashboard.netBalance")}
           value="৳60,000"
           change="+7%"
           icon={BarChart}
@@ -45,7 +48,7 @@ export const AdminDashboard = () => {
         />
 
         <KPIWidget
-          title="Pending Fees"
+          title={t("dashboard.pendingFees")}
           value="15"
           change="-3%"
           icon={AlertCircle}

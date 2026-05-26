@@ -14,6 +14,7 @@ const CommunityUser = () => {
 
   // Fetch users
   const { data: users = [], isLoading, isError, error } = useGetUsersQuery();
+  console.log("GET /users API response:", users);
   const [approveUser] = useApproveUserMutation();
   const [rejectUser] = useRejectUserMutation();
   const [deleteUser] = useDeleteUserMutation();

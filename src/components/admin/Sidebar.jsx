@@ -223,79 +223,56 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
-import { useDispatch } from "react-redux";
+import { useTranslation } from "react-i18next";
+import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import { logout } from "../../features/auth/authSlice";
 
 export const Sidebar = ({ role = "admin", onNavigate }) => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useDispatch();
+  const { user: currentUser } = useSelector((state) => state.auth);
 
   const [openSubmenu, setOpenSubmenu] = useState(null);
 
   // --- Dynamic Role-Based Menu ---
   const menuItems = {
     admin: [
-      {
-        id: "dashboard",
-        label: "Dashboard",
-        icon: <LayoutDashboard size={20} />,
-        path: "/admin-dashboard",
-      },
-      { id: "finances", label: "Finances", icon: <CreditCard size={20} />, path: "/admin/finances" },
-      { id: "payroll", label: "Payroll", icon: <Wallet size={20} />, path: "/admin/payroll" },
-      { id: "community", label: "Community", icon: <Users size={20} />, hasSubmenu: true },
-      { id: "security", label: "Security", icon: <ShieldCheck size={20} />, path: "/admin/security" },
-      { id: "analytics", label: "Analytics", icon: <BarChart3 size={20} />, path: "/admin/analytics" },
+      { id: "dashboard", label: t("sidebar.dashboard"), icon: <LayoutDashboard size={20} />, path: "/admin-dashboard" },
+      { id: "finances", label: t("sidebar.finances"), icon: <CreditCard size={20} />, path: "/admin/finances" },
+      { id: "payroll", label: t("sidebar.payroll"), icon: <Wallet size={20} />, path: "/admin/payroll" },
+      { id: "community", label: t("sidebar.community"), icon: <Users size={20} />, hasSubmenu: true },
+      { id: "security", label: t("sidebar.security"), icon: <ShieldCheck size={20} />, path: "/admin/security" },
+      { id: "analytics", label: t("sidebar.analytics"), icon: <BarChart3 size={20} />, path: "/admin/analytics" },
     ],
-
     Owner: [
-      {
-        id: "dashboard",
-        label: "Dashboard",
-        icon: <LayoutDashboard size={20} />,
-        path: "/owner-dashboard",
-      },
-      {
-        id: "tenants",
-        label: "Tenants",
-        icon: <Users size={20} />,
-        path: "/owner/tenants",
-      },
-      {
-        id: "payments",
-        label: "Payments",
-        icon: <CreditCard size={20} />,
-        path: "/owner/payments",
-      },
-      {
-        id: "reports",
-        label: "Reports",
-        icon: <BarChart3 size={20} />,
-        path: "/owner/reports",
-      },
+      { id: "dashboard", label: t("sidebar.dashboard"), icon: <LayoutDashboard size={20} />, path: "/owner-dashboard" },
+      { id: "tenants", label: t("sidebar.tenants"), icon: <Users size={20} />, path: "/owner/tenants" },
+      { id: "payments", label: t("sidebar.payments"), icon: <CreditCard size={20} />, path: "/owner/payments" },
+      { id: "reports", label: t("sidebar.reports"), icon: <BarChart3 size={20} />, path: "/owner/reports" },
     ],
   };
 
-  // --- Submenus (With Paths) ---
+  // --- Submenus ---
   const subMenuItems = {
     community: [
-      { id: "community-users", label: "Users", path: "/community/users" },
-      { id: "community-events", label: "Events & Campaigns", path: "/community/events" },
-      { id: "community-funds", label: "Funds & Expenses", path: "/community/funds" },
-      { id: "community-polls", label: "Polls & Voting", path: "/community/polls" },
-      { id: "community-blood", label: "Blood Donor Registry", path: "/community/blood" },
-      { id: "community-gallery", label: "Announcements / Gallery", path: "/community/gallery" },
-      { id: "community-plots", label: "Plots Info", path: "/community/plots" },
+      { id: "community-users", label: t("sidebar.users"), path: "/community/users" },
+      { id: "community-events", label: t("sidebar.events"), path: "/community/events" },
+      { id: "community-funds", label: t("sidebar.funds"), path: "/community/funds" },
+      { id: "community-polls", label: t("sidebar.polls"), path: "/community/polls" },
+      { id: "community-blood", label: t("sidebar.blood"), path: "/community/blood" },
+      { id: "community-gallery", label: t("sidebar.gallery"), path: "/community/gallery" },
+      { id: "community-plots", label: t("sidebar.plots"), path: "/community/plots" },
     ],
   };
 
   // --- Support Section ---
   const supportItems = [
-    { id: "settings", label: "Settings", icon: <Settings size={20} />, path: "/settings" },
-    { id: "notifications", label: "Notifications", icon: <Bell size={20} />, path: "/notifications" },
-    { id: "help", label: "Help Center", icon: <HelpCircle size={20} />, path: "/help" },
+    { id: "settings", label: t("sidebar.settings"), icon: <Settings size={20} />, path: "/settings" },
+    { id: "notifications", label: t("sidebar.notifications"), icon: <Bell size={20} />, path: "/notifications" },
+    { id: "help", label: t("sidebar.helpCenter"), icon: <HelpCircle size={20} />, path: "/help" },
   ];
 
   const toggleSubmenu = (id) => {
@@ -318,7 +295,7 @@ export const Sidebar = ({ role = "admin", onNavigate }) => {
 
       {/* Main Menu */}
       <nav className="flex-1 px-3 mt-4 overflow-y-auto">
-        <p className="text-xs text-gray-400 uppercase mb-2 ml-4">Main Menu</p>
+        <p className="text-xs text-gray-400 uppercase mb-2 ml-4">{t("sidebar.mainMenu")}</p>
         <ul className="space-y-1">
           {currentMenu.map((item) => {
             const isActive = location.pathname === item.path;
@@ -375,7 +352,7 @@ export const Sidebar = ({ role = "admin", onNavigate }) => {
         </ul>
 
         {/* Support Section */}
-        <p className="text-xs text-gray-400 uppercase mt-6 mb-2 ml-4">Support</p>
+        <p className="text-xs text-gray-400 uppercase mt-6 mb-2 ml-4">{t("sidebar.support")}</p>
         <ul className="space-y-1">
           {supportItems.map((item) => {
             const isActive = location.pathname === item.path;
@@ -402,14 +379,22 @@ export const Sidebar = ({ role = "admin", onNavigate }) => {
       <div className="p-4 border-t border-gray-200">
         <div className="flex items-center justify-between gap-3 px-4 py-2 rounded-xl bg-white border border-gray-200 shadow-sm mb-3">
           <div className="flex items-center gap-3">
-            <img
-              src="https://i.pravatar.cc/40"
-              alt={`${role} user`}
-              className="w-10 h-10 rounded-full border"
-            />
+            {currentUser?.avatar_url ? (
+              <img
+                src={currentUser.avatar_url}
+                alt={currentUser.name}
+                className="w-10 h-10 rounded-full border object-cover bg-gradient-to-br from-emerald-500 to-teal-600"
+              />
+            ) : (
+              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center">
+                <span className="text-white text-sm font-bold">
+                  {currentUser?.name ? currentUser.name.split(" ").map(n => n[0]).join("").toUpperCase().slice(0, 2) : "?"}
+                </span>
+              </div>
+            )}
             <div>
-              <p className="font-medium text-gray-800 text-sm capitalize">{role} User</p>
-              <p className="text-xs text-gray-500">{role.toLowerCase()}@rchms.com</p>
+              <p className="font-medium text-gray-800 text-sm">{currentUser?.name || "User"}</p>
+              <p className="text-xs text-gray-500 capitalize">{currentUser?.role?.replace("_", " ") || ""}</p>
             </div>
           </div>
         </div>
@@ -418,12 +403,12 @@ export const Sidebar = ({ role = "admin", onNavigate }) => {
           <button
             onClick={() => {
               dispatch(logout());
-              toast.success("Logged out successfully");
+              toast.success(t("sidebar.logoutSuccess"));
               navigate("/");
             }}
             className="text-sm text-gray-600 hover:text-emerald-600 hover:font-bold flex items-center gap-2"
           >
-            <LogOut size={18} /> Logout
+            <LogOut size={18} /> {t("sidebar.logout")}
           </button>
 
           <label className="flex items-center cursor-pointer">

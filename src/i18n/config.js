@@ -8,10 +8,10 @@ i18n.use(initReactI18next).init({
     bn: { translation: bn },
     en: { translation: en },
   },
-  lng: "bn", // Default language is Bangla
-  fallbackLng: "bn", // Fallback to Bangla if translation is missing
+  lng: localStorage.getItem("lang") || "bn", // Persist user's choice
+  fallbackLng: "bn",
   interpolation: {
-    escapeValue: false, // React already escapes values
+    escapeValue: false,
   },
 });
 
