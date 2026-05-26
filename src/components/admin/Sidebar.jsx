@@ -228,7 +228,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import { logout } from "../../features/auth/authSlice";
 
-export const Sidebar = ({ role = "admin", onNavigate }) => {
+export const Sidebar = ({ onNavigate }) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const location = useLocation();
@@ -247,12 +247,34 @@ export const Sidebar = ({ role = "admin", onNavigate }) => {
       { id: "security", label: t("sidebar.security"), icon: <ShieldCheck size={20} />, path: "/admin/security" },
       { id: "analytics", label: t("sidebar.analytics"), icon: <BarChart3 size={20} />, path: "/admin/analytics" },
     ],
-    Owner: [
-      { id: "dashboard", label: t("sidebar.dashboard"), icon: <LayoutDashboard size={20} />, path: "/owner-dashboard" },
-      { id: "tenants", label: t("sidebar.tenants"), icon: <Users size={20} />, path: "/owner/tenants" },
-      { id: "payments", label: t("sidebar.payments"), icon: <CreditCard size={20} />, path: "/owner/payments" },
-      { id: "reports", label: t("sidebar.reports"), icon: <BarChart3 size={20} />, path: "/owner/reports" },
+    // Owner group: full_owner, flat_owner, family_resident, caretaker
+    owner: [
+      { id: "dashboard", label: t("sidebar.dashboard"), icon: <LayoutDashboard size={20} />, path: "/dashboard" },
+      { id: "my-fees", label: t("sidebar.myFees"), icon: <CreditCard size={20} />, path: "/my-fees" },
+      { id: "notices", label: t("sidebar.notices"), icon: <Bell size={20} />, path: "/notices" },
+      { id: "events", label: t("sidebar.events"), icon: <Users size={20} />, path: "/events" },
     ],
+    // Tenant
+    tenant: [
+      { id: "dashboard", label: t("sidebar.dashboard"), icon: <LayoutDashboard size={20} />, path: "/dashboard" },
+      { id: "my-rent", label: t("sidebar.myRent"), icon: <CreditCard size={20} />, path: "/my-rent" },
+      { id: "notices", label: t("sidebar.notices"), icon: <Bell size={20} />, path: "/notices" },
+    ],
+    // Staff (imam, guard, cleaner, etc.)
+    staff: [
+      { id: "dashboard", label: t("sidebar.dashboard"), icon: <LayoutDashboard size={20} />, path: "/dashboard" },
+      { id: "my-payroll", label: t("sidebar.myPayroll"), icon: <Wallet size={20} />, path: "/my-payroll" },
+      { id: "attendance", label: t("sidebar.attendance"), icon: <BarChart3 size={20} />, path: "/attendance" },
+    ],
+  };
+
+  // Map user roles to menu groups
+  const getRoleGroup = (userRole) => {
+    if (userRole === "admin") return "admin";
+    if (userRole === "tenant") return "tenant";
+    if (["staff", "imam", "guard", "cleaner"].includes(userRole)) return "staff";
+    // full_owner, flat_owner, family_resident, caretaker → owner group
+    return "owner";
   };
 
   // --- Submenus ---
@@ -284,7 +306,7 @@ export const Sidebar = ({ role = "admin", onNavigate }) => {
     if (onNavigate) onNavigate(); // close sidebar on mobile after navigation
   };
 
-  const currentMenu = menuItems[role] || [];
+  const currentMenu = menuItems[getRoleGroup(currentUser?.role)] || menuItems.owner;
 
   return (
     <aside className="w-64 h-screen flex flex-col justify-between bg-gradient-to-br from-white via-gray-50 to-gray-100 rounded-tr-4xl rounded-br-4xl shadow-2xl">

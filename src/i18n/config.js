@@ -15,4 +15,11 @@ i18n.use(initReactI18next).init({
   },
 });
 
+// Set html lang attribute on init and on language change
+document.documentElement.lang = i18n.language;
+i18n.on("languageChanged", (lng) => {
+  document.documentElement.lang = lng;
+  localStorage.setItem("lang", lng);
+});
+
 export default i18n;

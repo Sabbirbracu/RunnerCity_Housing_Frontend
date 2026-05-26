@@ -281,7 +281,12 @@
     "polls": "Polls & Voting",
     "blood": "Blood Donor Registry",
     "gallery": "Announcements / Gallery",
-    "plots": "Plots Info"
+    "plots": "Plots Info",
+    "myFees": "My Fees",
+    "notices": "Notices",
+    "myRent": "My Rent",
+    "myPayroll": "My Payroll",
+    "attendance": "Attendance"
   },
   "dashboard": {
     "title": "Admin Dashboard",
