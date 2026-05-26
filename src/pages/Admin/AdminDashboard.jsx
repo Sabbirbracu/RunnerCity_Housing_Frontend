@@ -9,17 +9,17 @@ export const AdminDashboard = () => {
   return (
     <div className="space-y-6">
       {/* Top Section */}
-      <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold text-gray-800">Admin Dashboard</h1>
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-6">
+        <h1 className="text-xl md:text-2xl font-bold text-gray-800">Admin Dashboard</h1>
         <input
           type="text"
           placeholder="Search..."
-          className="px-4 py-2 rounded-lg border border-gray-300 outline-none focus:ring-2 focus:ring-emerald-500"
+          className="w-full sm:w-auto px-4 py-2 rounded-lg border border-gray-300 outline-none focus:ring-2 focus:ring-emerald-500"
         />
       </div>
 
       {/* KPI Widgets */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
         <KPIWidget
           title="Total Collected Fees (৳)"
           value="৳1,25,000"

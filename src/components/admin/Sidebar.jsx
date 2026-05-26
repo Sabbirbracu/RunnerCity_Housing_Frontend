@@ -227,7 +227,7 @@ import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import { logout } from "../../features/auth/authSlice";
 
-export const Sidebar = ({ role = "admin" }) => {
+export const Sidebar = ({ role = "admin", onNavigate }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useDispatch();
@@ -304,6 +304,7 @@ export const Sidebar = ({ role = "admin" }) => {
 
   const handleNavigate = (path) => {
     navigate(path);
+    if (onNavigate) onNavigate(); // close sidebar on mobile after navigation
   };
 
   const currentMenu = menuItems[role] || [];

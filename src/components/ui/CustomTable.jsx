@@ -58,19 +58,17 @@ const CustomTable = ({
   // Main Table UI
   return (
     <div
-      // KEY CHANGE: Removed solid bg-white, added border-opacity and a softer shadow
-      // For true glass effect, add 'backdrop-blur-sm' if you have a background element behind this component.
       className={`bg-white/90 rounded-2xl shadow-2xl ring-1 ring-white/50 border border-white/80 overflow-hidden ${className}`}
     >
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto -mx-0">
         <table className="min-w-full divide-y divide-gray-200">
-          {/* Header (Thead) - Softened background and increased contrast */}
+          {/* Header */}
           <thead className="bg-white/80">
             <tr>
               {columns.map((col) => (
                 <th
                   key={col.accessor}
-                  className={`px-6 py-3.5 text-left text-sm font-bold text-gray-800 uppercase tracking-wider ${
+                  className={`px-4 md:px-6 py-3 text-left text-xs md:text-sm font-bold text-gray-800 uppercase tracking-wider whitespace-nowrap ${
                     col.headerClassName || ""
                   }`}
                 >
@@ -80,7 +78,7 @@ const CustomTable = ({
             </tr>
           </thead>
 
-          {/* Body (Tbody) - Alternating rows with slight transparency, unique hover color */}
+          {/* Body */}
           <tbody className="divide-y divide-gray-100 bg-white">
             {data.map((row, rowIndex) => (
               <tr
@@ -88,15 +86,14 @@ const CustomTable = ({
                 onClick={() => onRowClick && onRowClick(row)}
                 className={`
                   ${onRowClick ? "cursor-pointer" : ""}
-                  ${rowIndex % 2 === 0 ? "bg-white/80" : "bg-gray-100/70"} 
-                  // SPECIAL HOVER: Brighter, more focused highlight color (e.g., sky-200)
-                  hover:bg-sky-200/50 transition duration-200 ease-in-out
+                  ${rowIndex % 2 === 0 ? "bg-white/80" : "bg-gray-50/70"} 
+                  hover:bg-sky-50/60 transition duration-200 ease-in-out
                 `}
               >
                 {columns.map((col) => (
                   <td
                     key={col.accessor}
-                    className={`px-6 py-4 whitespace-nowrap text-sm text-gray-800 ${
+                    className={`px-4 md:px-6 py-3 md:py-4 whitespace-nowrap text-xs md:text-sm text-gray-800 ${
                       col.cellClassName || ""
                     }`}
                   >

@@ -79,29 +79,32 @@ const _KPIWidgetCore = ({ title, value, change, icon: Icon, themeColors }) => {
 
   return (
     <div
-      className="bg-white rounded-2xl p-6 relative overflow-hidden transition-shadow duration-300 hover:shadow-lg kpi-card-effects"
+      className="bg-white rounded-xl md:rounded-2xl p-4 md:p-6 relative overflow-hidden transition-shadow duration-300 hover:shadow-lg kpi-card-effects"
       style={coreCardStyle}
     >
       {/* Top Row: Icon and Percentage Change */}
-      <div className="flex items-center justify-between mb-4">
+      <div className="flex items-center justify-between mb-3 md:mb-4">
         {/* Icon Circle */}
-        <div className="p-3 rounded-full flex items-center justify-center shadow-md" style={gradientStyle}>
-          <Icon size={24} className="text-white" />
+        <div className="p-2 md:p-3 rounded-full flex items-center justify-center shadow-md" style={gradientStyle}>
+          <Icon size={18} className="text-white md:hidden" />
+          <Icon size={24} className="text-white hidden md:block" />
         </div>
 
         {/* Percentage Change */}
-        <span className={`flex items-center text-xs font-semibold px-2 py-0.5 rounded-full ${pillColorClass}`}>
-          {isPositive ? <ArrowUpRight size={14} className="mr-0.5" /> : <ArrowDownRight size={14} className="mr-0.5" />}
+        <span className={`flex items-center text-[10px] md:text-xs font-semibold px-1.5 md:px-2 py-0.5 rounded-full ${pillColorClass}`}>
+          {isPositive ? <ArrowUpRight size={12} className="mr-0.5" /> : <ArrowDownRight size={12} className="mr-0.5" />}
           {changePercent}
         </span>
       </div>
 
       {/* Middle Section: Title, Value, and Sparkline */}
-      <div className="mt-4">
-        <p className="text-sm font-medium text-gray-500">{title}</p>
+      <div className="mt-3 md:mt-4">
+        <p className="text-xs md:text-sm font-medium text-gray-500 truncate">{title}</p>
         <div className="flex items-end justify-between">
-          <p className="text-3xl font-bold text-gray-900 mt-1">{value}</p>
-          <Dots colors={themeColors} dotsData={themeColors.sparklineData} />
+          <p className="text-lg md:text-3xl font-bold text-gray-900 mt-1">{value}</p>
+          <div className="hidden md:block">
+            <Dots colors={themeColors} dotsData={themeColors.sparklineData} />
+          </div>
         </div>
       </div>
     </div>

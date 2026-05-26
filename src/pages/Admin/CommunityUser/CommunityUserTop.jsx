@@ -9,7 +9,7 @@ const CommunityUserTop = ({ users }) => {
   const rejectedUsers = users.filter((u) => u.status === "rejected").length;
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
       <KPIWidget title="Total Registered Users" value={totalUsers} change="+5%" icon={Users} color="#3B82F6" />
       <KPIWidget title="Pending Approvals" value={pendingApprovals} change="-2%" icon={Users} color="#F59E0B" />
       <KPIWidget title="Committee Members" value={committeeMembers} change="+1%" icon={Users} color="#10B981" />
